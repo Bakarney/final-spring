@@ -1,0 +1,52 @@
+@charset "UTF-8";
+
+.body {
+    min-height: 85vh;
+}
+.simple_btn {
+	border: none;
+	background: none;
+	font-size: 100%;
+	color: white;
+}
+.simple_btn:hover {
+	text-decoration: underline;
+	cursor: pointer;
+}
+.folder {
+    width: 90vw;
+    min-height: 75vh;
+    margin-top: 5vh;
+    margin-bottom: 4vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: white;
+    border: 1px rgb(200, 200, 200) solid;
+    border-radius: 30px;
+}
+table {
+    margin: 5%;
+    width: 90%;
+    border-collapse: collapse;
+    border: white 2px solid;
+}
+TD, TH {
+    padding: 3px;
+    border: 1px solid #a5c926;
+}
+.menu__btn {
+	text-decoration: underline;
+}
+.link {
+	color: black;
+	text-decoration: underline;
+	border: none;
+	background: none;
+	font-family: Varela Round;
+	font-size: 16px;
+}
+.link:hover {
+	cursor: pointer;
+}

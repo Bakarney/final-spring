@@ -1,0 +1,128 @@
+
+.green_head {
+    height: 30%;
+    background-color: #a5c926;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.cont_head {
+    display: flex;
+    color: white;
+}
+.cont_head p {
+    margin-right: 10px;
+}
+.social_h img {
+    margin: 3px;
+    width: 1.5vw;
+}
+.profile_link {
+    height: 80%;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    border: none;
+    background: none;
+}
+.profile_link p {
+    margin-left: 10px;
+    color: white;
+    font-size: 16px;
+}
+.profile_link p:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+.form {
+	height: 100%;
+	margin-top: 1.9vh;
+}
+.profile {
+    height: 95%;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    border: none;
+    background: none;
+    margin-left: 10px;
+    color: white;
+    font-size: 16px;
+}
+.profile:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+@media all and (max-width: 2000px){
+    .green_head {
+        width: 93.5%;
+        padding: 0 3.25%;
+    }
+}
+@media all and (max-width: 1500px){
+    .green_head {
+        width: 93.5%;
+        padding: 0 3.25%;
+        font-size: 70%;
+        justify-content: right;
+    }
+    .social_h {
+        display: none;
+    }
+    .cont_head {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+.white_head {
+    height: 70%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: white;
+}
+.w_h_links a {
+    color: black;
+    text-decoration: none;
+    margin: 20px;
+}
+.w_h_links a:hover {
+    text-decoration: underline;
+}
+.w_h_blank {
+    width: 30%
+}
+.w_h_cart {
+    display: flex;
+    justify-content: space-between;
+    text-decoration: none;
+    color: black;
+}
+.w_h_c_text {
+    margin-top: 8%;
+}
+.w_h_c_text:hover {
+    text-decoration: underline;
+}
+.w_h_c_num {
+    width: 25px;
+    height: 25px;
+    margin-top: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #a5c926;
+    border-radius: 25px;
+    color: white;
+}
+@media all and (max-width: 1500px){
+    .w_h_links, .w_h_blank {
+        display: none;
+    }
+}
+.panel {
+	display: flex;
+}
+
+
+

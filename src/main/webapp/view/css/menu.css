@@ -1,0 +1,98 @@
+@charset "UTF-8";
+
+.hamburger-menu {
+	display: flex;
+	align-items: center;
+	margin-bottom: 1vh;
+}
+
+/* скрываем чекбокс */
+#menu__toggle {
+    opacity: 0;
+}
+/* стилизуем кнопку */
+.menu__btn {
+    display: flex; /* используем flex для центрирования содержимого */
+    align-items: center;  /* центрируем содержимое кнопки */
+    position: normal;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    z-index: 1;
+}
+.menu__btn:hover {
+	text-decoration: underline;
+}
+/* добавляем "гамбургер" */
+.menu__btn > span {
+    display: block;
+    /*position: absolute;*/
+    width: 100%;
+    height: 2px;
+}
+.menu__btn > span::after {
+    content: "Filter";
+    top: 8px;
+}
+/* контейнер меню */
+.menu__box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: fixed;
+    visibility: hidden;
+    top: 0;
+    left: -100%;
+    width: 300px;
+    height: 100%;
+    margin: 0;
+    padding: 80px 0;
+    list-style: none;
+    text-align: center;
+    background-color: #ECEFF1;
+    box-shadow: 1px 0px 6px rgba(0, 0, 0, .2);
+    z-index: 9999;
+    transition-duration: .25s;
+}
+/* элементы меню */
+.menu__item {
+    display: block;
+    padding: 12px 24px;
+    color: #333;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+    transition-duration: .25s;
+}
+.menu__item:hover {
+    background-color: #CFD8DC;
+}
+#menu__toggle:checked ~ .menu__btn > span::after {
+    content: "Close";
+}
+#menu__toggle:checked ~ .menu__btn {
+	position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 99999;
+    transition-duration: .25s;
+}
+#menu__toggle:checked ~ .menu__box {
+    visibility: visible;
+    left: 0;
+}
+.filter_label {
+	margin-left: 1vw;
+	margin-top: 5%;
+}
+.menu__box div {
+	margin-left: 2vw;
+}
+.menu_btn {
+	align-self: center;
+	margin-top: 5%;
+}
+.price {
+	width: 20%;
+}

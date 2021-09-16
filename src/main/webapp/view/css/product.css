@@ -1,0 +1,33 @@
+.body {
+    height: 85vh;
+}
+.folder {
+    height: 90vh;
+    width: 80%;
+    margin: 5%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    background-color: white;
+    border: rgb(200, 200, 200) 1px solid;
+    border-radius: 30px;
+}
+.folder img {
+    height: 60%;
+}
+.data {
+    height: 60%;
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 140%;
+    margin-right: 10%;
+    margin-left: -10%;
+}
+.fields, .info {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}

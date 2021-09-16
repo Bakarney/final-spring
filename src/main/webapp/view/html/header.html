@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" th:href="@{/css/main.css}">
+    <link type="text/css" rel="stylesheet" th:href="@{/css/header.css}">
+    <script src="main.js"></script>
+    <title>Header</title>
+</head>
+<body>
+    <div class="header">
+        <div class="green_head">
+            <div class="social">
+                <a href=""><img th:src="@{/media/social/twitter.svg}"></a>
+                <a href=""><img th:src="@{/media/social/facebook.svg}"></a>
+                <a href=""><img th:src="@{/media/social/instagram.svg}"></a>
+                <a href=""><img th:src="@{/media/social/pinterest.svg}"></a>
+                <a href=""><img th:src="@{/media/social/youtube.svg}"></a>
+            </div>
+            <div class="panel">
+	            <!--%
+	            	String html;
+	            	User user = (User)session.getAttribute("user");
+	            	if (user == null) {
+	            		html = "<a href=\"http://localhost:8080/final-spring/server/sign_in\" class=\"profile_link\">" +
+	                    		"<p>Sign in</p>" +
+	                        	"</a>";
+	            	} else {
+	            		html = "<a href=\"http://localhost:8080/final-spring/server/profile\" class=\"profile_link\">" +
+	                    		"<p>" + user.getName() + "</p>" +
+	                        	"</a>" +
+	                        	"<form class=\"form\" method=\"POST\" action=\"http://localhost:8080/final-spring/server/sign_out\">" +
+	                    		"<input type=\"submit\" class=\"profile\" value=\"Sign out\"></input>" +
+	                        	"</form>";
+	            	}
+	            	out.println(html);
+	            %-->
+            </div>
+        </div>
+        <div class="white_head">
+            <h1>ConstStore</h1>
+            <div class="w_h_links">
+                <a href="http://localhost:8080/final-spring/server/catalog">Catalog</a>
+                <a href="http://localhost:8080/final-spring/server/delivery">Delivery</a>
+                <a href="http://localhost:8080/final-spring/server/about">About</a>
+                <a href="http://localhost:8080/final-spring/server/contacts">Contacts</a>
+            </div>
+            <div class="w_h_blank"></div>
+            <a class="w_h_cart" href="http://localhost:8080/final-spring/server/cart">
+            	<div class="w_h_c_text">
+            		Cart
+            	</div>
+            	<img th:src="@{/media/cart.svg}">
+            	<div class="w_h_c_num">
+            		<!--%
+            			Order order = (Order)request.getSession().getAttribute("order");
+            			if (order != null)
+            				out.println(order.getCart().size());
+            			else
+            				out.println(0);
+            		%-->
+            	</div>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

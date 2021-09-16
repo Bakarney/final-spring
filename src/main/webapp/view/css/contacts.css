@@ -1,0 +1,96 @@
+.all {
+    width: 83.5%;
+    padding: 5%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 1px rgba(0,0,0,0.5);
+}
+.a_maps {
+    width: 100%;
+    height: 60vh;
+    margin-bottom: 10vh;
+    background-color: gray;
+}
+.a_info {
+    display: flex;
+    justify-content: space-between;
+}
+.a_i_form {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+.a_i_f_text, .a_i_f_area {
+    width: 90%;
+    font-size: 100%;
+    margin-top: 2vh;
+    margin-bottom: 5vh;
+    padding: 10px;
+    background-color: rgb(250, 250, 250);
+    border: rgb(200, 200, 200) 1px solid;
+    padding: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 30px;
+}
+.a_i_f_area {
+    font-family: Varela Round;
+    height: 20vh;
+}
+.b {
+    font-weight: bold;
+}
+.a_i_info h2 {
+    margin-top: 10vh;
+}
+.a_i_i_socials {
+    display: flex;
+}
+.a_i_i_socials img {
+    width: 70%;
+}
+.a_i_i_socials a {
+    height: 4vh;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+}
+.twitter {
+    background-color: rgb(0, 191, 255);
+}
+.facebook {
+    background-color: blue;
+}
+.instagram {
+    background-color: rgb(255, 80, 110);
+}
+.pintrest {
+    background-color: darkred;
+}
+.youtube {
+    background-color: red;
+}
+@media all and (max-width: 2000px){
+    .a_info {
+        flex-direction: row;
+    }
+    .a_i_info {
+        margin-right: 10%;
+    }
+    .a_i_form {
+        width: 50%;
+    }
+}
+@media all and (max-width: 1500px){
+    .a_info {
+        flex-direction: column;
+    }
+    .a_i_form {
+        width: 90%;
+    }
+}

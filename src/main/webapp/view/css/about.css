@@ -1,0 +1,140 @@
+.all {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+.a_int {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+.a_green {
+    color: #a5c926;
+}
+.a_int h1 {
+    margin-top: 1%;
+}
+.a_int a {
+    margin-top: 5%;
+    color: black;
+    text-decoration: none;
+    border-bottom: rgb(200, 200, 200) 1px solid;
+    transition: 0.5s;
+}
+
+
+.a_int a:hover {
+    border-bottom: #a5c926 1px solid;
+}
+.all img {
+    width: 93.5%;
+    margin: 10vh;
+    border-radius: 20px;
+}
+
+.margin {
+    margin: 10vh;
+}
+.banner {
+    width: 93.5%;
+    margin: 10vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.b_info {
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: column;
+}
+.b_info h1 {
+    border-bottom: #a5c926 2px solid;
+}
+.banner img {
+    width: 50%;
+}
+.story {
+    width: 100%;
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    background-image: url('../media/about-image.jpg');
+    background-size: cover;
+    background-position: center;
+}
+.story img {
+    width: 3%;
+    margin: 3%;
+    padding: 10px;
+    background-color: #a5c926;
+    border-radius: 50px;
+}
+@media all and (max-width: 2000px){
+    .story img {
+        width: 3%;
+    }
+    .banner {
+        flex-direction: row;
+    }
+    .b_info {
+        width: 40%;
+    }
+    .banner img {
+        width: 50%;
+    }
+}
+@media all and (max-width: 1500px){
+    .story img {
+        width: 10%;
+    }
+    .banner {
+        flex-direction: column;
+    }
+    .b_info {
+        width: 93.5%;
+        align-items: center;
+    }
+    .banner img {
+        width: 93.5%;
+    }
+}
+
+.move{
+    -webkit-animation: pulsing 2s infinite;
+  animation: pulsing 2s infinite;
+  animation-iteration-count: 1;
+}
+
+@-webkit-keyframes pulsing {
+  0% {
+    -webkit-transform: scale(0.5, 0.5);
+    transform: scale(0.5, 0.5)
+  }
+  50% {
+    -webkit-transform: scale(1.0, 1.0);
+    transform: scale(1.0, 1.0);
+  }
+  
+}
+
+@keyframes pulsing {
+  0% {
+    -webkit-transform: scale(0.5, 0.5);
+    transform: scale(0.5, 0.5)
+  }
+  50% {
+    -webkit-transform: scale(1.0, 1.0);
+    transform: scale(1.0, 1.0);
+  }
+  
+}

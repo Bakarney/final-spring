@@ -1,0 +1,88 @@
+.blank {
+    height: 10vh;
+}
+.navigation {
+    width: 93.5%;
+    height: 3vh;
+    display: flex;
+    align-items: center;
+    border: 2px rgb(200, 200, 200) solid;
+    border-radius: 7vh;
+    opacity: 50%;
+}
+.navigation a {
+    margin-left: 3%;
+    text-decoration: none;
+    color: black;
+}
+.navigation a:hover {
+    text-decoration: underline;
+}
+.navigation img {
+    margin: 1%;
+}
+.all {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+.a_header {
+    width: 93.5%;
+    margin: 7vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px #a5c926 solid;
+}
+.pagin {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	margin-right: 2vw;
+	margin-bottom: 1vh;
+}
+.pagin p {
+	margin: 5%;
+}
+.a_h_radio {
+    display: inline;
+	margin-right: 10px;
+}
+.a_h_radio input[type=radio] {
+	display: none;
+}
+.a_h_radio label {
+	display: inline-block;
+	cursor: pointer;
+	padding: 0px 15px;
+	/* user-select: none; */
+}
+.a_h_radio input[type=radio]:checked + label {
+    line-height: 30px;
+    color: white;
+    background: #a5c926;
+    border-radius: 30px;
+}
+.a_h_radio label:hover {
+	color: rgb(150, 150, 150);
+}
+.a_h_radio a {
+    color: black;
+    text-decoration: none;
+}
+.a_h_radio a:hover {
+    color: rgb(150, 150, 150);
+}
+.scale {
+    transition: 1s; /* Время эффекта */
+   }
+
+
+.scale:hover {
+    transform: scale(1.2); 
+    background:#53ea93;/* Увеличиваем масштаб */
+   }
+

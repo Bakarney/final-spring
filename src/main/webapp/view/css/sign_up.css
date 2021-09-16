@@ -1,0 +1,70 @@
+.body {
+    height: 85vh;
+}
+.folder {
+    height: 90vh;
+    width: 80%;
+    margin: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color: white;
+    border: rgb(200, 200, 200) 1px solid;
+    border-radius: 30px;
+}
+.main {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+.input {
+    margin: 2%;
+    margin-left: 7%;
+    font-size: 100%;
+    padding: 10px;
+    background-color: rgb(250, 250, 250);
+    border: rgb(200, 200, 200) 1px solid;
+    padding: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 30px;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.button {
+    width: 40%;
+    text-decoration: none;
+    color: white;
+    padding: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: #a5c926;
+    border-radius: 40px;
+    border: none;
+    transition: 0.5s;
+}
+.folder img {
+    height: 60%;
+    border-radius: 999999px;
+}
+.data {
+    height: 60%;
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 140%;
+    margin-right: 10%;
+    margin-left: -10%;
+}
+.fields, .info {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
