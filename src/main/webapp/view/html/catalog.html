@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" th:href="@{/css/main.css}">
+    <link type="text/css" rel="stylesheet" th:href="@{/css/catalog.css}">
+    <link type="text/css" rel="stylesheet" th:href="@{/css/menu.css}">
+    <script src="../main.js"></script>
+    <title>Catalog</title>
+</head>
+<body>
+    <div th:replace="/header"></div>
+    <div class="body">
+        <div class="blank"></div>
+        <div class="navigation">
+            <a href="http://localhost:8080/final/server/home">Home</a>
+            <img th:src="@{/media/5f8f84f3d4d23a31c1f2fcae_arrow-right-mini-icon.svg}">
+            Catalog
+        </div>
+        <div class="all">
+            <div class="a_header">
+                <div class="hamburger-menu">
+	                <input id="menu__toggle" type="checkbox" />
+	                <label class="menu__btn" for="menu__toggle">
+	                    <span></span>
+	                </label>
+	                <form class="menu__box">
+	                	<label class="filter_label">Sorted by:</label>
+	                	<div>
+                            <input type="radio" id="huey" name="sort" value="a-z" th:checked="${request.sort.equals('a-z')}"></input>
+                        	<label for="huey">Name (A-Z)</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="huey" name="sort" value="z-a" th:checked="${request.sort.equals('z-a')}"></input>
+                            <label for="huey">Name (Z-A)</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="huey" name="sort" value="l-h" th:checked="${request.sort.equals('l-h')}"></input>
+                            <label for="huey">Price (Low-High)</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="huey" name="sort" value="h-l" th:checked="${request.sort.equals('h-l')}"></input>
+                            <label for="huey">Price (High-Low)</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="huey" name="sort" value="new" th:checked="${request.sort.equals('new')}"></input>
+                            <label for="huey">Novelty (New-Old)</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="huey" name="sort" value="old" th:checked="${request.sort.equals('old')}"></input>
+                            <label for="huey">Novelty (Old-New)</label>
+                        </div>
+                        
+                        <label class="filter_label">Gender:</label>
+                        <div>
+                            <input type="radio" id="huey" name="gender" value="male" th:checked="${request.gender.equals('male')}"></input>
+                            <label for="huey">Male</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="huey" name="gender" value="female" th:checked="${request.gender.equals('female')}"></input>
+                            <label for="huey">Female</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="huey" name="gender" value="unisex" th:checked="${request.gender.equals('unisex')}"></input>
+                            <label for="huey">Unisex</label>
+                        </div>
+                        
+                        <label class="filter_label">Producer:</label>
+                        <div th:each="producer : ${producers}">
+                        	<input type="checkbox" id="huey" name="producer" th:value="${producer}" th:checked="${request.producers}.contains(${producer})">
+                        	<label th:text="${producer}" for="huey">Name</label>
+                        </div>
+                        
+                 		<label class="filter_label">Category:</label>
+                 		<div th:each="category : ${categiries}">
+                        	<input type="checkbox" id="huey" name="producer" th:value="${category}" th:checked="${request.categories}.contains(${category})">
+                        	<label th:text="${category}" for="huey">Name</label>
+                        </div>
+                        
+                        <label class="filter_label">Price:</label>
+                        <div>
+                        	From:
+                        	<input class="price" type="number" name="bot" th:value="${request.bot} == null ? 0 : ${bot}">
+                        	To:
+                        	<input class="price" type="number" name="top" th:value="${request.top} == null ? 0 : ${top}">
+                        </div>
+                        
+                        <input class="button menu_btn" type="submit" value="Filter">
+	                </form>
+        		</div>
+        		<!-- div class="pagin">
+        			<% 
+        			String forward = "http://localhost:8080/final/server/catalog?";
+        			String backward;
+        			if (request.getQueryString() != null) forward += request.getQueryString();
+        			String pageStr = request.getParameter("page");
+        			int totalNum = (Integer)request.getAttribute("numberPages");
+        			int pageNum;
+        			if (pageStr == null) {
+        				pageNum = 1;
+        				forward += (forward.endsWith("?")) ? "" : "&";
+        			} else {
+        				pageNum = Integer.valueOf(pageStr);
+        				forward = forward.replaceAll("page=[0-9]+", "");
+        				forward += (forward.endsWith("?") || forward.endsWith("&")) ? "" : "&";
+        			}
+        			backward = forward;
+        			forward += "page=" + (pageNum + 1);
+    				backward += "page=" + (pageNum - 1);
+    				
+    				if (pageNum <= 1)
+    					backward = "class=\"dis_button\"";
+    				else 
+    					backward = "class=\"button\" href=\"" + backward + "\"";
+    				
+    				if (pageNum >= totalNum) 
+    					forward = "class=\"dis_button\"";
+    				else
+    					forward = "class=\"button\" href=\"" + forward + "\"";
+        			%>
+        			<a <%= backward %>>Backward</a>
+        			<p><%= pageNum + "/" + totalNum %></p>
+        			<a <%= forward %>>Forward</a>
+        		</div-->
+            </div>
+            <div class="showcase">
+            	<a th:each="product, iter : ${products}" th:href="@{/product?id=${product}}" class="product">
+            		<img th:src="@{/media/${product.getCategory()}/${porduct.getPhoto()}}">
+            		<div class="p_info" class="scale">
+            			<div th:if="${iter.count}%4 == 1" class="s_row">
+	            			<p class="p_i_text">${product.getPrice()}</p>
+	            			<p class="p_i_price">$${product.getPrice()}</p>
+	            		</div th:if="${iter.count}%4 == 1">
+            		</div>
+            	</a>
+            </div>
+        </div>
+        <div th:replace="/footer"></div>
+    </div>
+</body>
+</html>

@@ -19,26 +19,20 @@
                 <a href=""><img th:src="@{/media/social/pinterest.svg}"></a>
                 <a href=""><img th:src="@{/media/social/youtube.svg}"></a>
             </div>
-            <div class="panel">
-	            <!--%
-	            	String html;
-	            	User user = (User)session.getAttribute("user");
-	            	if (user == null) {
-	            		html = "<a href=\"http://localhost:8080/final-spring/server/sign_in\" class=\"profile_link\">" +
-	                    		"<p>Sign in</p>" +
-	                        	"</a>";
-	            	} else {
-	            		html = "<a href=\"http://localhost:8080/final-spring/server/profile\" class=\"profile_link\">" +
-	                    		"<p>" + user.getName() + "</p>" +
-	                        	"</a>" +
-	                        	"<form class=\"form\" method=\"POST\" action=\"http://localhost:8080/final-spring/server/sign_out\">" +
-	                    		"<input type=\"submit\" class=\"profile\" value=\"Sign out\"></input>" +
-	                        	"</form>";
-	            	}
-	            	out.println(html);
-	            %-->
+            <div th:unless="${session.user}" class="panel">
+            	<a th:href="@{/sign_in}" class="profile_link">
+            		<p>Sign in</p>
+            	</a>
             </div>
-        </div>
+            <div th:if="${session.user}" class="panel">
+                <a th:href="@{/profile}" class="profile_link">
+            		<p th:text="${session.user}">Profile</p>
+            	</a>
+            	<form class="form" method="POST" th:action="@{/sign_out}">
+                 	<input type="submit" class="profile" value="Sign out"></input>
+                </form>
+            </div>
+      	</div>
         <div class="white_head">
             <h1>ConstStore</h1>
             <div class="w_h_links">
@@ -53,14 +47,11 @@
             		Cart
             	</div>
             	<img th:src="@{/media/cart.svg}">
-            	<div class="w_h_c_num">
-            		<!--%
-            			Order order = (Order)request.getSession().getAttribute("order");
-            			if (order != null)
-            				out.println(order.getCart().size());
-            			else
-            				out.println(0);
-            		%-->
+            	<div th:if="${session.order}" th:text="${session.order.getCart().size()}" class="w_h_c_num">
+            		Number
+            	</div>
+            	<div th:unless="${session.order}" class="w_h_c_num">
+            		0
             	</div>
             </a>
         </div>
