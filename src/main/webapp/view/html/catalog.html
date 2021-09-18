@@ -15,7 +15,7 @@
     <div class="body">
         <div class="blank"></div>
         <div class="navigation">
-            <a href="http://localhost:8080/final/server/home">Home</a>
+            <a th:href="@{/home}">Home</a>
             <img th:src="@{/media/5f8f84f3d4d23a31c1f2fcae_arrow-right-mini-icon.svg}">
             Catalog
         </div>
@@ -26,115 +26,88 @@
 	                <label class="menu__btn" for="menu__toggle">
 	                    <span></span>
 	                </label>
-	                <form class="menu__box">
+	                <form class="menu__box" id="param">
 	                	<label class="filter_label">Sorted by:</label>
 	                	<div>
-                            <input type="radio" id="huey" name="sort" value="a-z" th:checked="${request.sort.equals('a-z')}"></input>
+                            <input type="radio" id="huey" name="sort" value="a-z" th:checked="${#request.getParameter('sort')} and ${#request.getParameter('sort')} == 'a-z'"></input>
                         	<label for="huey">Name (A-Z)</label>
                         </div>
                         <div>
-                            <input type="radio" id="huey" name="sort" value="z-a" th:checked="${request.sort.equals('z-a')}"></input>
+                            <input type="radio" id="huey" name="sort" value="z-a" th:checked="${#request.getParameter('sort')} and ${#request.getParameter('sort')} == 'z-a'"></input>
                             <label for="huey">Name (Z-A)</label>
                         </div>
                         <div>
-                            <input type="radio" id="huey" name="sort" value="l-h" th:checked="${request.sort.equals('l-h')}"></input>
+                            <input type="radio" id="huey" name="sort" value="l-h" th:checked="${#request.getParameter('sort')} and ${#request.getParameter('sort')} == 'l-h'"></input>
                             <label for="huey">Price (Low-High)</label>
                         </div>
                         <div>
-                            <input type="radio" id="huey" name="sort" value="h-l" th:checked="${request.sort.equals('h-l')}"></input>
+                            <input type="radio" id="huey" name="sort" value="h-l" th:checked="${#request.getParameter('sort')} and ${#request.getParameter('sort')} == 'h-l'"></input>
                             <label for="huey">Price (High-Low)</label>
                         </div>
                         <div>
-                            <input type="radio" id="huey" name="sort" value="new" th:checked="${request.sort.equals('new')}"></input>
+                            <input type="radio" id="huey" name="sort" value="new" th:checked="${#request.getParameter('sort')} and ${#request.getParameter('sort')} == 'new'"></input>
                             <label for="huey">Novelty (New-Old)</label>
                         </div>
                         <div>
-                            <input type="radio" id="huey" name="sort" value="old" th:checked="${request.sort.equals('old')}"></input>
+                            <input type="radio" id="huey" name="sort" value="old" th:checked="${#request.getParameter('sort')} and ${#request.getParameter('sort')} == 'old'"></input>
                             <label for="huey">Novelty (Old-New)</label>
                         </div>
                         
                         <label class="filter_label">Gender:</label>
                         <div>
-                            <input type="radio" id="huey" name="gender" value="male" th:checked="${request.gender.equals('male')}"></input>
+                            <input type="radio" id="huey" name="gender" value="male" th:checked="${#request.getParameter('gender')} and ${#request.getParameter('gender')} == 'male'"></input>
                             <label for="huey">Male</label>
                         </div>
                         <div>
-                            <input type="radio" id="huey" name="gender" value="female" th:checked="${request.gender.equals('female')}"></input>
+                            <input type="radio" id="huey" name="gender" value="female" th:checked="${#request.getParameter('gender')} and ${#request.getParameter('gender')} == 'female'"></input>
                             <label for="huey">Female</label>
                         </div>
                         <div>
-                            <input type="radio" id="huey" name="gender" value="unisex" th:checked="${request.gender.equals('unisex')}"></input>
+                            <input type="radio" id="huey" name="gender" value="unisex" th:checked="${#request.getParameter('gender')} and ${#request.getParameter('gender')} == 'unisex'"></input>
                             <label for="huey">Unisex</label>
                         </div>
                         
                         <label class="filter_label">Producer:</label>
                         <div th:each="producer : ${producers}">
-                        	<input type="checkbox" id="huey" name="producer" th:value="${producer}" th:checked="${request.producers}.contains(${producer})">
+                        	<input type="checkbox" id="huey" name="producer" th:value="${producer}" th:checked="${#request.getParameterValues('producer')} and ${#lists.contains(#request.getParameterValues('producer'), producer)}">
                         	<label th:text="${producer}" for="huey">Name</label>
                         </div>
                         
                  		<label class="filter_label">Category:</label>
-                 		<div th:each="category : ${categiries}">
-                        	<input type="checkbox" id="huey" name="producer" th:value="${category}" th:checked="${request.categories}.contains(${category})">
+                 		<div th:each="category : ${categories}">
+                        	<input type="checkbox" id="huey" name="category" th:value="${category}" th:checked="${#request.getParameterValues('category')} and ${#lists.contains(#request.getParameterValues('category'), category)}">
                         	<label th:text="${category}" for="huey">Name</label>
                         </div>
                         
                         <label class="filter_label">Price:</label>
                         <div>
                         	From:
-                        	<input class="price" type="number" name="bot" th:value="${request.bot} == null ? 0 : ${bot}">
+                        	<input class="price" type="number" name="bot" th:value="${#request.getParameter('bot')} == null ? 0 : ${#request.getParameter('bot')}">
                         	To:
-                        	<input class="price" type="number" name="top" th:value="${request.top} == null ? 0 : ${top}">
+                        	<input class="price" type="number" name="top" th:value="${#request.getParameter('top')} == null ? 1000 : ${#request.getParameter('top')}">
                         </div>
+                        
+                        <input type="hidden" name="page" th:value="(${#request.getParameter('page')}) ? ${#request.getParameter('page')} : 1">
                         
                         <input class="button menu_btn" type="submit" value="Filter">
 	                </form>
         		</div>
-        		<!-- div class="pagin">
-        			<% 
-        			String forward = "http://localhost:8080/final/server/catalog?";
-        			String backward;
-        			if (request.getQueryString() != null) forward += request.getQueryString();
-        			String pageStr = request.getParameter("page");
-        			int totalNum = (Integer)request.getAttribute("numberPages");
-        			int pageNum;
-        			if (pageStr == null) {
-        				pageNum = 1;
-        				forward += (forward.endsWith("?")) ? "" : "&";
-        			} else {
-        				pageNum = Integer.valueOf(pageStr);
-        				forward = forward.replaceAll("page=[0-9]+", "");
-        				forward += (forward.endsWith("?") || forward.endsWith("&")) ? "" : "&";
-        			}
-        			backward = forward;
-        			forward += "page=" + (pageNum + 1);
-    				backward += "page=" + (pageNum - 1);
-    				
-    				if (pageNum <= 1)
-    					backward = "class=\"dis_button\"";
-    				else 
-    					backward = "class=\"button\" href=\"" + backward + "\"";
-    				
-    				if (pageNum >= totalNum) 
-    					forward = "class=\"dis_button\"";
-    				else
-    					forward = "class=\"button\" href=\"" + forward + "\"";
-        			%>
-        			<a <%= backward %>>Backward</a>
-        			<p><%= pageNum + "/" + totalNum %></p>
-        			<a <%= forward %>>Forward</a>
-        		</div-->
+        		<div class="pagin">
+        			<button form="param" class="button" th:formaction="@{/catalog_prev}" th:disabled="${#request.getParameter('page')} == null or ${#request.getParameter('page')} < 2">Backward</button>
+        			<p><span th:text="${#request.getParameter('page')} ? ${#request.getParameter('page')} : '1'"></span>/<span th:text="${numberPages}"></span></p>
+        			<button form="param" class="button" th:formaction="@{/catalog_next}" th:disabled="${#request.getParameter('page')} and ${#request.getParameter('page')} >= ${numberPages}">Forward</button>
+        		</div>
             </div>
             <div class="showcase">
-            	<a th:each="product, iter : ${products}" th:href="@{/product?id=${product}}" class="product">
-            		<img th:src="@{/media/${product.getCategory()}/${porduct.getPhoto()}}">
-            		<div class="p_info" class="scale">
-            			<div th:if="${iter.count}%4 == 1" class="s_row">
-	            			<p class="p_i_text">${product.getPrice()}</p>
-	            			<p class="p_i_price">$${product.getPrice()}</p>
-	            		</div th:if="${iter.count}%4 == 1">
-            		</div>
-            	</a>
+            	<div th:each="products : ${listProducts}" class="s_row">
+	            	<a th:each="product : ${products}" th:href="@{/product?id={id}(id=${product.getId()})}" class="product">
+	            		<img th:src="@{/media/{category}/{photo}(photo=${product.getPhoto()}, category=${product.getCategory()})}">
+	            		<div class="p_info scale">
+	            			<p th:text="${product.getName()}" class="p_i_text">Name</p>
+	            			<p th:text="'$' + ${product.getPrice()}" class="p_i_price">Price</p>
+	            		</div>
+	            	</a>
+            	</div>
             </div>
         </div>
         <div th:replace="/footer"></div>

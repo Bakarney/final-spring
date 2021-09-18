@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
+import project.DAO.mappers.*;
 import project.entities.Product;
 
 @Component
@@ -68,7 +69,7 @@ public class ProductDAO {
 				+ "INNER JOIN categories ON products.category_id=categories.id "
 				+ "INNER JOIN producer ON products.producer_id=producer.id \n";
 		sql = buildQuery(sql, categories, producers, gender, bot, top, null, null, null);
-		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Integer.class)).get(0);
+		return jdbcTemplate.query(sql, new IntegerMapper()).get(0);
 	}
 	
 	public boolean create(Product product) throws SQLException {

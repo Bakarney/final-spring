@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <link type="text/css" th:href="@{/css/main.css}" rel="stylesheet">
+    <link type="text/css" th:href="@{/css/product.css}" rel="stylesheet">
+    <script src="main.js"></script>
+    <title th:text="${product.getName()}">Product</title>
+</head>
+<body>
+    <div th:replace="/header"></div>
+    <div class="body">
+        <div class="folder">
+            <img th:src="@{/media/{category}/{photo}(photo=${product.getPhoto()}, category=${product.getCategory()})}">
+            <table class="data">
+                <tr>
+                    <td>Name:</td>
+                    <td th:text="${product.getName()}">Name</td>
+                </tr>
+                <tr>
+                    <td>Category:</td>
+                    <td th:text="${product.getCategory()}">Category</td>
+                </tr>
+                <tr>
+                    <td>Description:</td>
+                    <td th:text="${product.getDescription()}">Description</td>
+                </tr>
+                <tr>
+                    <td>Gender:</td>
+                    <td th:text="${product.getGender()}">Gender</td>
+                </tr>
+                <tr>
+                    <td>Producer:</td>
+                    <td th:text="${product.getProducer()}">Producer</td>
+                </tr>
+                <tr>
+                    <td>Price:</td>
+                    <td th:text="${product.getPrice()}">Price</td>
+                </tr>
+            </table>
+            <form method="POST" th:action="@{/add_product}">
+            	<input type="hidden" name="product_id" th:value="${product.getId()}">
+            	<input class="button" type="submit" value="Buy">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

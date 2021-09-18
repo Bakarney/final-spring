@@ -8,6 +8,8 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
+import project.DAO.mappers.StringMapper;
+
 @Component
 public class ProducerDAO {
 	
@@ -22,7 +24,7 @@ public class ProducerDAO {
 		String sql =
 				"SELECT name "
 				+ "FROM producer";
-		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(String.class));
+		return jdbcTemplate.query(sql, new StringMapper());
 	}
 	
 	public boolean create(String name) throws SQLException {

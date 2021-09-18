@@ -1,6 +1,7 @@
 package project.controllers;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,17 +17,16 @@ import project.entities.*;
 @Controller
 public class Test {
 	
+	private ProducerDAO dao;
+	
+	@Autowired
+	public Test(ProducerDAO dao) {
+		this.dao = dao;
+	}
+
 	@GetMapping("/test")
 	public String test(Model model) {
-		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
-		ProductDAO dao = context.getBean(ProductDAO.class);
-		context.close();
 		System.out.println("Test servlet");
-		try {
-			System.out.println(dao.getFiltered(null, null, null, null, null, null, null, null));
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
 		return "Test";
 	}
 }

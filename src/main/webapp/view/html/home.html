@@ -14,20 +14,20 @@
 	<div class="body">
         <div class="welcome">
             <h1>Welcome on territory of fun</h1>
-            <a class="button" href="http://localhost:8080/final-spring/server/catalog">Open Catalog</a>
+            <a class="button" th:href="@{/catalog}">Open Catalog</a>
         </div>
         <div class="two">
             <div class="t_plastic">
                 <img th:src="@{/media/plastic toys/train.png}">
                 <div class="t_p_text">
                     <h1>Plastic Constructor</h1>
-                    <a class="button" href="http://localhost:8080/final-spring/server/catalog">Shop Now</a>
+                    <a class="button" th:href="@{/catalog}">Shop Now</a>
                 </div>
             </div>
             <div class="t_wooden">
                 <div class="t_w_text">
                     <h1>Wooden Constructor</h1>
-                    <a class="button" href="http://localhost:8080/final-spring/server/catalog">Shop Now</a>
+                    <a class="button" th:href="@{/catalog}">Shop Now</a>
                 </div>
                 <img th:src="@{/media/wooden toys/flower.png}">
             </div>
@@ -35,7 +35,7 @@
         <div class="plastic">
             <div class="p_header">
                 <h1>Plastic constructor</h1>
-                <a href="http://localhost:8080/final-spring/server/catalog" class="p_h_link">See All Toys<img th:src="@{/media/5f8f84f3d4d23a31c1f2fcae_arrow-right-mini-icon.svg}"></a>
+                <a th:href="@{/catalog}" class="p_h_link">See All Toys<img th:src="@{/media/5f8f84f3d4d23a31c1f2fcae_arrow-right-mini-icon.svg}"></a>
             </div>
             <div class="showcase">
                 <div class="s_row">
@@ -73,7 +73,7 @@
         <div class="plastic">
             <div class="p_header">
                 <h1>Wooden Toys</h1>
-                <a href="http://localhost:8080/final-spring/server/catalog" class="p_h_link">See All Toys<img th:src="@{/media/5f8f84f3d4d23a31c1f2fcae_arrow-right-mini-icon.svg}"></a>
+                <a th:href="@{/catalog}" class="p_h_link">See All Toys<img th:src="@{/media/5f8f84f3d4d23a31c1f2fcae_arrow-right-mini-icon.svg}"></a>
             </div>
             <div class="showcase">
                 <div class="s_row">
