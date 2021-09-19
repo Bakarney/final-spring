@@ -1,5 +1,7 @@
 package project.controllers.commands;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -10,36 +12,18 @@ import org.springframework.ui.Model;
 @Component
 public class CommandController {
 	
-	private BuildCatalog buildCatalog;
+	private Map<String, Command> commands;
 	
 	@Autowired
-	public void setBuildCatalog(BuildCatalog buildCatalog) {
-		this.buildCatalog = buildCatalog;
+	public CommandController(Map<String, Command> commands) {
+		this.commands = commands;
 	}
 	
-	public void buildCatalog(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
-		buildCatalog.execute(request, response, model);
-	}
-	
-	private CatalogChangePage catalogChangePage;
-	
-	@Autowired
-	public void setCatalogChangePage(CatalogChangePage catalogChangePage) {
-		this.catalogChangePage = catalogChangePage;
-	}
-	
-	public void catalogNext(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
-		catalogChangePage.execute(request, response, model);
-	}
-	
-	private BuildProduct buildProduct;
-	
-	@Autowired
-	public void setBuildProduct(BuildProduct buildProduct) {
-		this.buildProduct = buildProduct;
-	}
-	
-	public void buildProduct(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
-		buildProduct.execute(request, response, model);
+	public void execute(String command, HttpServletRequest request, HttpServletResponse response, Model model) {
+		try {
+			commands.get(command).execute(request, response, model);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

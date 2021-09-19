@@ -8,22 +8,23 @@ import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
 
 import project.DAO.*;
-import project.entities.Product;
 
 @Component
-public class BuildProduct implements Command {
+public class OrderReject implements Command {
 	
-	private ProductDAO productDAO;
-	
+	private OrderDAO orderDAO;
+
 	@Autowired
-	public BuildProduct(ProductDAO productDAO) {
-		this.productDAO = productDAO;
+	public OrderReject(OrderDAO orderDAO) {
+		this.orderDAO = orderDAO;
 	}
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
-		int id = Integer.valueOf(request.getParameter("id"));
-		Product prod = productDAO.get(id);
-		model.addAttribute("product", prod);
+    	int id = Integer.valueOf(request.getParameter("id"));
+    	orderDAO.setState(id, "rejected");
+    	
+    	response.sendRedirect("/final-spring/admin_orders");
 	}
+
 }

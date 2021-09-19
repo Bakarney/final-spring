@@ -6,8 +6,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
 
-import com.mysql.cj.Query;
-
 @Component
 public class CatalogChangePage implements Command {
 

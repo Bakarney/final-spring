@@ -8,22 +8,22 @@ import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
 
 import project.DAO.*;
-import project.entities.Product;
 
 @Component
-public class BuildProduct implements Command {
+public class AdminUser implements Command {
 	
-	private ProductDAO productDAO;
-	
+	private UserDAO userDAO;
+
 	@Autowired
-	public BuildProduct(ProductDAO productDAO) {
-		this.productDAO = productDAO;
+	public AdminUser(UserDAO userDAO) {
+		this.userDAO = userDAO;
 	}
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
-		int id = Integer.valueOf(request.getParameter("id"));
-		Product prod = productDAO.get(id);
-		model.addAttribute("product", prod);
+    	int id = Integer.valueOf(request.getParameter("id"));
+    	userDAO.setAdmin(id, !userDAO.isAdmin(id));
+    	response.sendRedirect("/final-spring/admin_users");
 	}
+
 }

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" th:href="@{/css/main.css}">
+    <link type="text/css" rel="stylesheet" th:href="@{/css/admin.css}">
+	<title>Admin orders</title>
+</head>
+<body>
+	<div th:replace="/admin_header"></div>
+    <div class="body">
+        <div class="folder">
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>User id</th>
+                    <th>User name</th>
+                    <th>Product id</th>
+                    <th>Product name<th>
+                </tr>
+                <tr th:each="order : ${orders}">
+                	<td th:rowspan="${order.getCart().size()}" th:if="${order.getId()}" th:text="${order.getId()}">ID</td>
+                	<td th:rowspan="${order.getCart().size()}" th:if="${order.getId()}" th:text="${order.getUserId()}">User ID</td>
+                	<td th:rowspan="${order.getCart().size()}" th:if="${order.getId()}" th:text="${users.get(${order.getUserId()})}">User Name</td>
+                	<td th:text="${order.getCart().get(0)}">Product ID</td>
+                	<td th:text="${products.get(order.getCart().get(0))}">Product Name</td>
+                	<td th:rowspan="${order.getCart().size()}" th:if="${order.getId()} and ${order.getState()} == 'registrated'">
+                		<form th:action="@{/set_paid?id={id}(id=${order.getId()})}" method="POST">
+                			<input type="submit" class="link" value="Set Paid"></input>
+                		</form>
+                	</td>
+                	<td th:rowspan="${order.getCart().size()}" th:if="${order.getId()} and ${order.getState()} == 'registrated'">
+                		<form th:action="@{/reject_order?id={id}(id=${order.getId()})}" method="POST">
+                			<input type="submit" class="link" value="Reject"></input>
+                		</form>
+                	</td>
+                	<td th:rowspan="${order.getCart().size()}" th:if="${order.getId()} and ${order.getState()} != 'registrated'" th:text="${order.getState()}"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

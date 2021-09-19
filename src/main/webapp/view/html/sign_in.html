@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" th:href="@{/css/main.css}">
+    <link type="text/css" rel="stylesheet" th:href="@{/css/sign_in.css}">
+    <script src="main.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div th:replace="/header"></div>
+    <div class="body">
+        <form class="sign_in_form" method="POST" th:action="@{/sign_in}">
+            <p>Sign in</p>
+            <span th:if="${#request.getParameter('error')}" th:text="${#request.getParameter('error')}">Error</span>
+            <input name="email" class="input" type="email" placeholder="Email">
+            <input name="password" class="input" type="password" placeholder="Password">
+            <div class="buttons">
+                <a class="button a_button" th:href="@{/sign_up}">Sign up</a>
+                <input class="button" type="submit" value="Sign in">
+            </div>
+        </form>
+    </div>
+</body>
+</html>

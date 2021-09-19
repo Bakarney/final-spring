@@ -8,22 +8,21 @@ import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
 
 import project.DAO.*;
-import project.entities.Product;
 
 @Component
-public class BuildProduct implements Command {
+public class DeleteUser implements Command {
 	
-	private ProductDAO productDAO;
-	
+	private UserDAO userDAO;
+
 	@Autowired
-	public BuildProduct(ProductDAO productDAO) {
-		this.productDAO = productDAO;
+	public DeleteUser(UserDAO userDAO) {
+		this.userDAO = userDAO;
 	}
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
-		int id = Integer.valueOf(request.getParameter("id"));
-		Product prod = productDAO.get(id);
-		model.addAttribute("product", prod);
+		userDAO.delete(Integer.valueOf(request.getParameter("id")));
+    	response.sendRedirect("/final-spring/admin_users");
 	}
+
 }

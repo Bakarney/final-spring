@@ -1,5 +1,7 @@
 package project.controllers.commands;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -8,22 +10,22 @@ import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
 
 import project.DAO.*;
-import project.entities.Product;
+import project.entities.*;
 
 @Component
-public class BuildProduct implements Command {
+public class BuildAdminUsers implements Command {
 	
-	private ProductDAO productDAO;
-	
+	private UserDAO userDAO;
+
 	@Autowired
-	public BuildProduct(ProductDAO productDAO) {
-		this.productDAO = productDAO;
+	public BuildAdminUsers(UserDAO userDAO) {
+		this.userDAO = userDAO;
 	}
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
-		int id = Integer.valueOf(request.getParameter("id"));
-		Product prod = productDAO.get(id);
-		model.addAttribute("product", prod);
+		List<User> users = userDAO.getAll();
+		request.setAttribute("users", users);
 	}
+
 }

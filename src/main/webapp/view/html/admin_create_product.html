@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" th:href="@{/css/main.css}">
+	<link type="text/css" rel="stylesheet" th:href="@{/css/menu.css}">
+    <link type="text/css" rel="stylesheet" th:href="@{/css/admin.css}">
+	<title>Create product</title>
+</head>
+<body>
+	<div th:replace="/admin_header"></div>
+    <div class="body">
+        <form class="folder" method="POST" th:action="@{/create_product}" enctype="multipart/form-data">
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th><input name="name" type="text"></th>
+                </tr>
+                <tr>
+                    <th>Category</th>
+                    <th><input name="category" type="text"></th>
+                </tr>
+                <tr>
+                    <th>Gender</th>
+                    <th><input name="gender" type="text"></th>
+                </tr>
+                <tr>
+                    <th>Producer</th>
+                    <th><input name="producer" type="text"></th>
+                </tr>
+                <tr>
+                    <th>Number</th>
+                    <th><input  name="number" type="number"></th>
+                </tr>
+                <tr>
+                    <th>Price</th>
+                    <th><input name="price" type="number"></th>
+                </tr>
+                <tr>
+                    <th>Photo</th>
+                    <th><input name="photo" type="file"></th>
+                </tr>
+            </table>
+            <input class="button" type="submit" value="Create">
+        </form>
+    </div>
+</body>
+</html>

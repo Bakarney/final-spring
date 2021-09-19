@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" th:href="@{/css/main.css}">
+	<link type="text/css" rel="stylesheet" th:href="@{/css/menu.css}">
+    <link type="text/css" rel="stylesheet" th:href="@{/css/admin.css}">
+	<title>Cart</title>
+</head>
+<body>
+	<div th:replace="/header"></div>
+    <div class="body">
+        <div class="folder">
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Gender</th>
+                    <th>Producer</th>
+                    <th>Price</th>
+                    <th>Photo</th>
+                </tr>
+			    <tr th:each="product : ${products}">
+			    	<td th:text="${product.getName()}">Name</td>
+			    	<td th:text="${product.getCategory()}">Category</td>
+                    <td th:text="${product.getGender()}">Gender</td>
+                    <td th:text="${product.getProducer()}">Producer</td>
+                    <td th:text="${product.getPrice()}">Price</td>
+                    <td>
+                    	<a class="link" th:href="@{/media/{category}/{photo}(photo=${product.getPhoto()}, category=${product.getCategory()})}" th:text="${product.getPhoto()}">Photo</a>
+                    </td>
+                    <td>
+                    	<form method="POST" th:action="@{/remove_product?id={id}(id=${product.getId()})}">
+                    		<input type="submit" class="link" value="Delete"></input>
+                    	</form>
+                    </td>
+                </tr>
+            </table>
+            <form method="POST" th:action="@{/confirm_order}">
+            	<input type="hidden" name="order_id" th:value="${order.getId()}">
+            	<input class="button" type="submit" value="Buy">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

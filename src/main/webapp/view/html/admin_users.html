@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" th:href="@{/css/main.css}">
+    <link type="text/css" rel="stylesheet" th:href="@{/css/admin.css}">
+	<title>Admin users</title>
+</head>
+<body>
+	<div th:replace="/admin_header"></div>
+    <div class="body">
+        <div class="folder">
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th>Card</th>
+                    <th>Admin</th>
+                    <th>Active</th>
+                </tr>
+                <tr th:each="user : ${users}">
+                	<td th:text="user.getId()">ID</td>
+                    <td th:text="user.getName()">Name</td>
+                    <td th:text="user.getEmail()">Email</td>
+                    <td th:text="user.getPhone()">Phone</td>
+                    <td th:text="user.getAddress()">Address</td>
+                    <td th:text="user.getCard()">Card</td>
+                    <td th:text="user.isAdmin()">Admin</td>
+                    <td th:text="user.isActive()">Active</td>
+                    <td>
+                    	<form th:action="@{/block_user?id={id}(id=${user.getId()})}" method="POST">
+                    		<input type="submit" class="link" th:value="${user.isActive()} ? 'Block' : 'Unblock'"></input>
+                    	</form>
+                    </td>
+                    <td>
+                    	<form th:action="@{/admin_user?id={id}(id=${user.getId()})}" method="POST">
+                    		<input type="submit" class="link" value="Admin"></input>
+                    	</form>
+                    </td>
+                    <td>
+                    	<form th:action="@{/delete_user?id={id}(id=${user.getId()})}" method="POST">
+                    		<input type="submit" class="link" value="Delete"></input>
+                    	</form>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
