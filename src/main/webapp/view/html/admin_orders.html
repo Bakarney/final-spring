@@ -22,7 +22,7 @@
                 <tr th:each="order : ${orders}">
                 	<td th:rowspan="${order.getCart().size()}" th:if="${order.getId()}" th:text="${order.getId()}">ID</td>
                 	<td th:rowspan="${order.getCart().size()}" th:if="${order.getId()}" th:text="${order.getUserId()}">User ID</td>
-                	<td th:rowspan="${order.getCart().size()}" th:if="${order.getId()}" th:text="${users.get(${order.getUserId()})}">User Name</td>
+                	<td th:rowspan="${order.getCart().size()}" th:if="${order.getId()}" th:text="${users.get(order.getUserId())}">User Name</td>
                 	<td th:text="${order.getCart().get(0)}">Product ID</td>
                 	<td th:text="${products.get(order.getCart().get(0))}">Product Name</td>
                 	<td th:rowspan="${order.getCart().size()}" th:if="${order.getId()} and ${order.getState()} == 'registrated'">

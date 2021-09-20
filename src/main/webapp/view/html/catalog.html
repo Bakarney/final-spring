@@ -102,7 +102,7 @@
             	<div th:each="products : ${listProducts}" class="s_row">
 	            	<a th:each="product : ${products}" th:href="@{/product?id={id}(id=${product.getId()})}" class="product">
 	            		<img th:src="@{/media/{category}/{photo}(photo=${product.getPhoto()}, category=${product.getCategory()})}">
-	            		<div class="p_info scale">
+	            		<div class="p_info">
 	            			<p th:text="${product.getName()}" class="p_i_text">Name</p>
 	            			<p th:text="'$' + ${product.getPrice()}" class="p_i_price">Price</p>
 	            		</div>

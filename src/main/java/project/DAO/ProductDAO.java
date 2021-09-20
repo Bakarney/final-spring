@@ -28,7 +28,10 @@ public class ProductDAO {
 				+ "INNER JOIN categories ON categories.id=products.category_id "
 				+ "INNER JOIN producer ON products.producer_id=producer.id "
 				+ "WHERE products.id=?";
-		return jdbcTemplate.query(sql, new Object[] {id}, new BeanPropertyRowMapper<>(Product.class)).get(0);
+		List<Product> products = jdbcTemplate.query(sql, new Object[] {id}, new BeanPropertyRowMapper<>(Product.class));
+		if (products.size() == 0)
+			return null;
+		return products.get(0);
 	}
 	
 	public List<Product> getAll() {

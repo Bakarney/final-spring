@@ -24,6 +24,7 @@ public class ConfirmOrder implements Command {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
 		int id = Integer.valueOf(request.getParameter("order_id"));
+		System.out.println(id);
 		HttpSession session = request.getSession();
 		User user = (User)session.getAttribute("user");
 		

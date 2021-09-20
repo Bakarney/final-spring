@@ -38,7 +38,7 @@
                 </tr>
             </table>
             <form method="POST" th:action="@{/confirm_order}">
-            	<input type="hidden" name="order_id" th:value="${order.getId()}">
+            	<input type="hidden" name="order_id" th:value="${session.order} ? ${session.order.getId()} : ''">
             	<input class="button" type="submit" value="Buy">
             </form>
         </div>

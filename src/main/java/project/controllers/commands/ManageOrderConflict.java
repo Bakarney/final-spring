@@ -33,9 +33,11 @@ public class ManageOrderConflict implements Command {
 			Order newOrder = orderDAO.create(user.getId());
 			for (Integer i : order.getCart()) 
 				orderDAO.addProduct(newOrder.getId(), i);
-			session.setAttribute("order", newOrder);
+			order.setId(newOrder.getId());
+			session.setAttribute("order", order);
 			break;
 		case "cloud":
+			session.setAttribute("order", session.getAttribute("cloud_order"));
 			session.removeAttribute("cloud_order");
 			break;
 		case "combine":

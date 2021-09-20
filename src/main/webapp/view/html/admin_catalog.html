@@ -101,13 +101,13 @@
 	    	        <td th:text="${product.getId()}">Id</td>
 	                <td th:text="${product.getName()}">Name</td>
 	                <td th:text="${product.getCategory()}">Category</td>
-	                <td th:text="${porduct.getGender()}">Gender</td>
+	                <td th:text="${product.getGender()}">Gender</td>
 	                <td th:text="${product.getProducer()}">Producer</td>
 	                <td th:text="${product.getNumber()}">Number</td>
 	                <td th:text="${product.getPrice()}">Price</td>
 	                <td><a class="link" th:text="${product.getPhoto()}" th:href="@{/media/{category}/{photo}(photo=${product.getPhoto()}, category=${product.getCategory()})}">Photo</a></td>
 	                <td><a class="link" th:href="@{/admin_product?id={id}(id=${product.getId()})}">Edit</a></td>
-	                <td><form th:action="@{/delete_product?id={id}(id=${product.gteId()})}" method="POST"><input type="submit" class="link" value="Delete"></input></form></td>
+	                <td><form th:action="@{/delete_product?id={id}(id=${product.getId()})}" method="POST"><input type="submit" class="link" value="Delete"></input></form></td>
                 </tr>
                 <tr>
                 	<th></th>

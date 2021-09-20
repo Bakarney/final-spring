@@ -46,8 +46,12 @@ public class BuildAdminOrders implements Command {
 					firstIter = false;
 					tmpOrder.setId(order.getId());
 					tmpOrder.setUserId(order.getUserId());
+					tmpOrder.setState(order.getState());
+					tmpOrder.setCart(order.getCart());
+				} else {
+					tmpOrder.setCart(new ArrayList<>());
+					tmpOrder.getCart().add(i);
 				}
-				tmpOrder.setCart(order.getCart().subList(0, 1));
 				preparedOrders.add(tmpOrder);
 			}
 		}

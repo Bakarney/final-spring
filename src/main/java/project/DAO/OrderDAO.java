@@ -35,8 +35,10 @@ public class OrderDAO {
 				"SELECT orders.id,orders.state,user_id "
 				+ "FROM orders "
 				+ "WHERE orders.id=?";
-		Order order = jdbcTemplate.query(sql, new Object[] {id}, new BeanPropertyRowMapper<>(Order.class)).get(0);
-		return getOrdersProducts(order);
+		List<Order> orders = jdbcTemplate.query(sql, new Object[] {id}, new BeanPropertyRowMapper<>(Order.class));
+		if (orders.size() == 0)
+			return null;
+		return getOrdersProducts(orders.get(0));
 	}
 	
 	public Order get(User user) throws SQLException {
@@ -44,8 +46,10 @@ public class OrderDAO {
 				"SELECT orders.id "
 				+ "FROM orders "
 				+ "WHERE user_id=? AND orders.state=\"preparing\"";
-		Order order = jdbcTemplate.query(sql, new Object[] {user.getId()}, new BeanPropertyRowMapper<>(Order.class)).get(0);
-		return getOrdersProducts(order);
+		List<Order> orders = jdbcTemplate.query(sql, new Object[] {user.getId()}, new BeanPropertyRowMapper<>(Order.class));
+		if (orders.size() == 0)
+			return null;
+		return getOrdersProducts(orders.get(0));
 	}
 	
 	public List<Order> getAll() throws SQLException {
@@ -64,13 +68,13 @@ public class OrderDAO {
 				"INSERT INTO orders (user_id) "
 				+ "VALUES (?)";
 		jdbcTemplate.update(sql, userId);
-		sql =	"SELECT id "
-				+ "FROM orders "
-				+ "WHERE user_id=? AND orders.state=\"preparing\"";
-		return jdbcTemplate.query(sql, new Object[] {userId}, new BeanPropertyRowMapper<>(Order.class)).get(0);
+		User user = new User();
+		user.setId(userId);
+		return get(user);
 	}
 	
 	public boolean addProduct(int id, int product_id) throws SQLException {
+		System.out.println(id + " " + product_id);
 		String sql =
 				"INSERT INTO orders_products (order_id,product_id) "
 				+ "VALUES (?,?)";
@@ -89,9 +93,9 @@ public class OrderDAO {
 	public boolean setState(int id, String state) throws SQLException {
 		String sql =
 				"UPDATE orders "
-				+ "SET state=?"
+				+ "SET state=? "
 				+ "WHERE id=?";
-		int num = jdbcTemplate.update(sql, id, state);
+		int num = jdbcTemplate.update(sql, state, id);
 		return num > 0;
 	}
 	

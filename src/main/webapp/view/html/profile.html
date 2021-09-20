@@ -8,7 +8,7 @@
     <link type="text/css" rel="stylesheet" th:href="@{/css/main.css}">
     <link type="text/css" rel="stylesheet" th:href="@{/css/profile.css}">
     <script src="main.js"></script>
-    <title th:text="session.user.getName()">User</title>
+    <title th:text="${session.user.getName()}">User</title>
 </head>
 <body>
     <div th:replace="/header"></div>
@@ -23,11 +23,11 @@
                     <p>Card:</p>
                 </div>
                 <div class="info">
-                    <p th:text="session.user.getName()">Name</p>
-                    <p th:text="session.user.getEmail()">Email</p>
-                    <p th:text="session.user.getPhone()">Phone</p>
-                    <p th:text="session.user.getAddress()">Address</p>
-                    <p th:text="session.user.getCard()">Card</p>
+                    <p th:text="${session.user.getName()}">Name</p>
+                    <p th:text="${session.user.getEmail()}">Email</p>
+                    <p th:text="${session.user.getPhone()}">Phone</p>
+                    <p th:text="${session.user.getAddress()}">Address</p>
+                    <p th:text="${session.user.getCard()}">Card</p>
                 </div>
             </div>
             <form method="POST" th:action="@{/sign_out}">

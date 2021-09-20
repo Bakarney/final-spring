@@ -23,7 +23,7 @@ public class BlockUser implements Command {
 	public void execute(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
     	int id = Integer.valueOf(request.getParameter("id"));
     	userDAO.setStatus(id, !userDAO.isActive(id));
-    	response.sendRedirect("http://localhost:8080/final/server/admin_users");
+    	response.sendRedirect("/final-spring/admin_users");
 	}
 
 }

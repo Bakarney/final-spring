@@ -27,12 +27,16 @@ public class OrderRemoveProduct implements Command {
 		HttpSession session = request.getSession();
 		Order order = (Order)session.getAttribute("order");
 		order.getCart().remove(id);
-		session.setAttribute("order", order);
 		
-		orderDAO.removeProduct(order.getId(), id);
-		
-		if (orderDAO.get(order.getId()) == null)
-			orderDAO.delete(order.getId());
+		if (order.getCart().isEmpty()) {
+			session.removeAttribute("order");
+			if (session.getAttribute("user") != null)
+				orderDAO.delete(order.getId());
+		} else {
+			session.setAttribute("order", order);
+			if (session.getAttribute("user") != null)
+				orderDAO.removeProduct(order.getId(), id);
+		}
 		
 		response.sendRedirect("/final-spring/cart");
 	}

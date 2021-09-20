@@ -23,14 +23,14 @@
                     <th>Active</th>
                 </tr>
                 <tr th:each="user : ${users}">
-                	<td th:text="user.getId()">ID</td>
-                    <td th:text="user.getName()">Name</td>
-                    <td th:text="user.getEmail()">Email</td>
-                    <td th:text="user.getPhone()">Phone</td>
-                    <td th:text="user.getAddress()">Address</td>
-                    <td th:text="user.getCard()">Card</td>
-                    <td th:text="user.isAdmin()">Admin</td>
-                    <td th:text="user.isActive()">Active</td>
+                	<td th:text="${user.getId()}">ID</td>
+                    <td th:text="${user.getName()}">Name</td>
+                    <td th:text="${user.getEmail()}">Email</td>
+                    <td th:text="${user.getPhone()}">Phone</td>
+                    <td th:text="${user.getAddress()}">Address</td>
+                    <td th:text="${user.getCard()}">Card</td>
+                    <td th:text="${user.isAdmin()}">Admin</td>
+                    <td th:text="${user.isActive()}">Active</td>
                     <td>
                     	<form th:action="@{/block_user?id={id}(id=${user.getId()})}" method="POST">
                     		<input type="submit" class="link" th:value="${user.isActive()} ? 'Block' : 'Unblock'"></input>

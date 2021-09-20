@@ -35,7 +35,7 @@ public class UpdateProduct implements Command {
 		prod.setProducer(request.getParameter("producer"));
 		prod.setNumber(Integer.valueOf(request.getParameter("number")));
 		prod.setPrice(Float.valueOf(request.getParameter("price")));
-		prod.setPhoto(saveFile(request, response, prod.getCategory()));
+		//prod.setPhoto(saveFile(request, response, prod.getCategory()));
 		productDAO.update(prod);
 		
 		response.sendRedirect("/final-spring/admin_catalog");

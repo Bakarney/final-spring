@@ -80,7 +80,7 @@ public class FrontController {
 	}
 	
 	@GetMapping("/profile")
-	public String getProfile() {
+	public String getProfile(HttpServletRequest request) {
 		return "profile";
 	}
 	
@@ -106,6 +106,11 @@ public class FrontController {
 	public String getAdminProduct(HttpServletRequest request, HttpServletResponse response, Model model) {
 		command.execute("buildAdminProduct", request, response, model);
 		return "admin_product";
+	}
+	
+	@GetMapping("/create_product")
+	public String getCreateProduct(HttpServletRequest request, HttpServletResponse response, Model model) {
+		return "admin_create_product";
 	}
 	
 	@GetMapping("/admin_users")
@@ -147,10 +152,10 @@ public class FrontController {
 	
 	@PostMapping("/confirm_order")
 	public void confirmOrder(HttpServletRequest request, HttpServletResponse response, Model model) {
-		command.execute("congirmOrder", request, response, model);
+		command.execute("confirmOrder", request, response, model);
 	}
 	
-	@PostMapping("/manage_order_conflict")
+	@PostMapping("/manage_carts")
 	public void manageConflict(HttpServletRequest request, HttpServletResponse response, Model model) {
 		command.execute("manageOrderConflict", request, response, model);
 	}
@@ -162,6 +167,7 @@ public class FrontController {
 	
 	@PostMapping("/create_product")
 	public void createProduct(HttpServletRequest request, HttpServletResponse response, Model model) {
+		System.out.println(request.getParameter("name"));
 		command.execute("createProduct", request, response, model);
 	}
 	
@@ -185,12 +191,12 @@ public class FrontController {
 		command.execute("deleteUser", request, response, model);
 	}
 	
-	@PostMapping("/order_set_paid")
+	@PostMapping("/set_paid")
 	public void orderSetPaid(HttpServletRequest request, HttpServletResponse response, Model model) {
 		command.execute("orderSetPaid", request, response, model);
 	}
 	
-	@PostMapping("/order_reject")
+	@PostMapping("/reject_order")
 	public void orderReject(HttpServletRequest request, HttpServletResponse response, Model model) {
 		command.execute("orderReject", request, response, model);
 	}

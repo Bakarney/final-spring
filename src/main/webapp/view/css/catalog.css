@@ -77,12 +77,12 @@
     color: rgb(150, 150, 150);
 }
 .scale {
-    transition: 1s; /* Время эффекта */
+    transition: 1s;
    }
 
 
 .scale:hover {
     transform: scale(1.2); 
-    background:#53ea93;/* Увеличиваем масштаб */
+    background:#53ea93;
    }
 

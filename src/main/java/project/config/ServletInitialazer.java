@@ -1,6 +1,9 @@
 package project.config;
 
+import javax.servlet.Filter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+
+import project.AuthTokenFilter;
 
 public class ServletInitialazer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
@@ -19,4 +22,8 @@ public class ServletInitialazer extends AbstractAnnotationConfigDispatcherServle
 		return new String[] {"/"};
 	}
 	
+	@Override
+    protected Filter[] getServletFilters() {
+        return new Filter[]{new AuthTokenFilter()};
+    }
 }

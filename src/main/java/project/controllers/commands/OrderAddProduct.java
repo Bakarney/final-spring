@@ -30,7 +30,7 @@ public class OrderAddProduct implements Command {
 		
 		if (user != null) {
 			order = orderDAO.get(user);
-			if (order == null)
+			if (order == null) 
 				order = orderDAO.create(user.getId());
 			orderDAO.addProduct(order.getId(), id);
 			order.getCart().add(id);
@@ -44,6 +44,6 @@ public class OrderAddProduct implements Command {
 			session.setAttribute("order", order);
 		}
 		
-		response.sendRedirect("/final-servlet/product?id=" + id);
+		response.sendRedirect("/final-spring/product?id=" + id);
 	}
 }

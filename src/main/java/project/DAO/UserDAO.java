@@ -23,31 +23,40 @@ public class UserDAO {
 	
 	public User get(String email, String password) throws SQLException {
 		String sql = 
-				"SELECT id,name,email,phone,addres,card "
+				"SELECT id,name,email,phone,address,card "
 				+ "FROM users "
 				+ "WHERE email=? AND users.password=?";
-		return jdbcTemplate.query(sql, new Object[] {email, password}, new BeanPropertyRowMapper<>(User.class)).get(0);
+		List<User> users = jdbcTemplate.query(sql, new Object[] {email, password}, new BeanPropertyRowMapper<>(User.class));
+		if (users.size() == 0)
+			return null;
+		return users.get(0);
 	}
 	
 	public User get(String email) throws SQLException {
 		String sql = 
-				"SELECT id,name,email,phone,addres,card,admin,status "
+				"SELECT id,name,email,phone,address,card,admin,active "
 				+ "FROM users "
 				+ "WHERE email=?";
-		return jdbcTemplate.query(sql, new Object[] {email}, new BeanPropertyRowMapper<>(User.class)).get(0);
+		List<User> users = jdbcTemplate.query(sql, new Object[] {email}, new BeanPropertyRowMapper<>(User.class));
+		if (users.size() == 0)
+			return null;
+		return users.get(0);
 	}
 	
 	public User get(int id) throws SQLException {
 		String sql = 
-				"SELECT id,name,email,phone,addres,card,admin,status "
+				"SELECT id,name,email,phone,address,card,admin,active "
 				+ "FROM users "
 				+ "WHERE id=?";
-		return jdbcTemplate.query(sql, new Object[] {id}, new BeanPropertyRowMapper<>(User.class)).get(0);
+		List<User> users = jdbcTemplate.query(sql, new Object[] {id}, new BeanPropertyRowMapper<>(User.class));
+		if (users.size() == 0)
+			return null;
+		return users.get(0);
 	}
 	
 	public List<User> getAll() throws SQLException {
 		String sql =
-				"SELECT id,name,email,phone,addres,card,admin,status "
+				"SELECT id,name,email,phone,address,card,admin,active "
 				+ "FROM users";
 		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(User.class));
 	}
@@ -62,7 +71,7 @@ public class UserDAO {
 	
 	public boolean isActive(int id) throws SQLException {
 		String sql =
-				"SELECT status "
+				"SELECT active "
 				+ "FROM users "
 				+ "WHERE id=?";
 		return jdbcTemplate.query(sql, new Object[] {id}, new BooleanMapper()).get(0);
@@ -70,7 +79,7 @@ public class UserDAO {
 	
 	public boolean create(User user) throws SQLException {
 		String sql =
-				"INSERT INTO users (name,users.password,email,phone,addres,card) "
+				"INSERT INTO users (name,users.password,email,phone,address,card) "
 				+ "VALUES (?,?,?,?,?,?)";
 		int num = jdbcTemplate.update(sql, user.getName(), user.getPassword(), user.getEmail(), user.getPhone(),
 				user.getAddress(), user.getCard());
@@ -80,7 +89,7 @@ public class UserDAO {
 	public boolean setStatus(int id, boolean status) throws SQLException {
 		String sql = 
 				"UPDATE users "
-				+ "SET status=? "
+				+ "SET active=? "
 				+ "WHERE id=?";
 		int num = jdbcTemplate.update(sql, status, id);
 		return num > 0;

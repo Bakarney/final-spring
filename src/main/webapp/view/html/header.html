@@ -26,7 +26,7 @@
             </div>
             <div th:if="${session.user}" class="panel">
                 <a th:href="@{/profile}" class="profile_link">
-            		<p th:text="${session.user}">Profile</p>
+            		<p th:text="${session.user.getName()}">Profile</p>
             	</a>
             	<form class="form" method="POST" th:action="@{/sign_out}">
                  	<input type="submit" class="profile" value="Sign out"></input>
@@ -47,11 +47,8 @@
             		Cart
             	</div>
             	<img th:src="@{/media/cart.svg}">
-            	<div th:if="${session.order}" th:text="${session.order.getCart().size()}" class="w_h_c_num">
-            		Number
-            	</div>
             	<div th:text="${session.order} ? ${session.order.getCart().size()} : 0" class="w_h_c_num">
-            		0
+            		Number
             	</div>
             </a>
         </div>

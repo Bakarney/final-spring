@@ -11,7 +11,8 @@
 <body>
 	<div th:replace="/admin_header"></div>
     <div class="body">
-        <form class="folder" method="POST" th:action="@{/create_product}" enctype="multipart/form-data">
+    <!-- enctype="multipart/form-data" -->
+        <form class="folder" method="POST" th:action="@{/create_product}">
             <table>
                 <tr>
                     <th>Name</th>
@@ -31,7 +32,7 @@
                 </tr>
                 <tr>
                     <th>Number</th>
-                    <th><input  name="number" type="number"></th>
+                    <th><input name="number" type="number"></th>
                 </tr>
                 <tr>
                     <th>Price</th>
