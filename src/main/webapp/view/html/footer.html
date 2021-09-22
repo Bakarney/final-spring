@@ -6,25 +6,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <link type="text/css" rel="stylesheet" th:href="@{/css/main.css}">
     <link type="text/css" rel="stylesheet" th:href="@{/css/footer.css}">
-    <script src="main.js"></script>
-    <title>Document</title>
+    <title th:text="#{inter.footer.title}">Footer</title>
 </head>
 <body>
 	<div class="foot">
             <div class="sub">
                 <div class="s_info">
                     <img th:src="@{/media/social/telegram.svg}">
-                    <h1>Subscribe to our newsletter & get <span>10% discount!</span></h1>
+                    <h1><p th:text="#{inter.footer.sub}">Subscribe to our newsletter & get</p> <span th:text="#{inter.footer.sub.discount}">10% discount!</span></h1>
                 </div>
                 <form>
                     <input class="s_f_email" type="email" placeholder="Enter your email address">
-                    <button type="submit"> Subscribe </button>
+                    <button type="submit" th:text="#{inter.footer.sub.btn}"> Subscribe </button>
                 </form>
             </div>
             <div class="insta">
                 <div class="i_header">
-                    <h1>We're on Instagram!</h1>
-                    <a href="">@ConstStore</a>
+                    <h1 th:text="#{inter.footer.insta.title}">We're on Instagram!</h1>
+                    <a href="" th:text="#{inter.footer.insta.link}">@ConstStore</a>
                 </div>
                 <div class="i_photos">
                     <div class="i_p_left">
@@ -38,15 +37,15 @@
                         <img th:src="@{/media/insta/5f8f9806dd6620f0d2a4f2fc_30907.970.jpg}">
                     </div>
                 </div>
-                <a class="button" href="">See More Photos</a>
+                <a class="button" href="" th:text="#{inter.footer.insta.btn}">See More Photos</a>
             </div>
             <div class="footer">
-                <h1>ConstStore</h1>
+                <h1 th:text="#{inter.footer.shop}">ConstStore</h1>
                 <div class="f_links">
-                    <a th:href="@{/catalog}">Catalog</a>
-                    <a th:href="@{/delivery}">Delivery</a>
-                    <a th:href="@{/about}">About</a>
-                    <a th:href="@{/contacts}">Contacts</a>
+                    <a th:href="@{/catalog}" th:text="#{inter.footer.link.a}">Catalog</a>
+                    <a th:href="@{/delivery}" th:text="#{inter.footer.link.b}">Delivery</a>
+                    <a th:href="@{/about}" th:text="#{inter.footer.link.c}">About</a>
+                    <a th:href="@{/contacts}" th:text="#{inter.footer.link.d}">Contacts</a>
                 </div>
                 <div class="social">
                     <a href=""><img th:src="@{/media/social/twitter.svg}"></a>

@@ -14,47 +14,47 @@
         <form class="folder" method="POST" th:action="@{/update_product}" enctype="multipart/form-data">
             <table>
                 <tr>
-                    <th>ID</th>
+                    <th th:text="#{inter.admin_product.id}">ID</th>
                     <th th:text="${product.getId()}">ID</th>
                     <th><input name="id" type="number" th:value="${product.getId()}" readonly></th>
                 </tr>
                 <tr>
-                    <th>Name</th>
+                    <th th:text="#{inter.admin_product.name}">Name</th>
                     <th th:text="${product.getName()}">Name</th>
                     <th><input name="name" type="text" th:value="${product.getName()}"></th>
                 </tr>
                 <tr>
-                    <th>Category</th>
+                    <th th:text="#{inter.admin_product.category}">Category</th>
                     <th th:text="${product.getCategory()}">Category</th>
                     <th><input name="category" type="text" th:value="${product.getCategory()}"></th>
                 </tr>
                 <tr>
-                    <th>Gender</th>
+                    <th th:text="#{inter.admin_product.gender}">Gender</th>
                     <th th:text="${product.getGender()}">Gender</th>
                     <th><input name="gender" type="text" th:value="${product.getGender()}"></th>
                 </tr>
                 <tr>
-                    <th>Producer</th>
+                    <th th:text="#{inter.admin_product.producer}">Producer</th>
                     <th th:text="${product.getProducer()}">Producer</th>
                     <th><input name="producer" type="text" th:value="${product.getProducer()}"></th>
                 </tr>
                 <tr>
-                    <th>Number</th>
+                    <th th:text="#{inter.admin_product.number}">Number</th>
                     <th th:text="${product.getNumber()}">Number</th>
                     <th><input name="number" type="number" th:value="${product.getNumber()}"></th>
                 </tr>
                 <tr>
-                    <th>Price</th>
+                    <th th:text="#{inter.admin_product.price}">Price</th>
                     <th th:text="${product.getPrice()}">Price</th>
                     <th><input name="price" type="number" th:value="${product.getPrice()}"></th>
                 </tr>
                 <tr>
-                    <th>Photo</th>
+                    <th th:text="#{inter.admin_product.photo}">Photo</th>
                     <th><a class="link" th:href="@{/media/{category}/{photo}(photo=${product.getPhoto()}, category=${product.getCategory()})}" th:text="${product.getPhoto()}">Photo</a></th>
                     <th><input name="photo" type="file"></th>
                 </tr>
             </table>
-            <input class="button" type="submit" value="Update">
+            <input class="button" type="submit" th:value="#{inter.admin_product.btn}">
         </form>
     </div>
 </body>

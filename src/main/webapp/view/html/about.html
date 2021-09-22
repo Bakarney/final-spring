@@ -6,51 +6,49 @@
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <link type="text/css" rel="stylesheet" th:href="@{/css/main.css}">
     <link type="text/css" rel="stylesheet" th:href="@{/css/about.css}">
-    <script src="../main.js"></script>
-    <title>About</title>
+    <title th:text="#{inter.about.title}">About</title>
 </head>
 <body>
     <div th:replace="/header"></div>
     <div class="body">
         <div class="blank"></div>
         <div class="navigation">
-            <a th:href="@{/home}">Home</a>
+            <a th:href="@{/home}" th:text="#{inter.about.home}">Home</a>
             <img th:src="@{/media/5f8f84f3d4d23a31c1f2fcae_arrow-right-mini-icon.svg}">
-            About
+            <span th:text="#{inter.about.navigation}">About</span>
         </div>
         <div class="all">
             <div class="a_int">
-                <p class="a_green">All You Need is Fun!</p>
-                <h1>Introducing ConstStore</h1>
-                Our store has a rich history of 10 years. During this time, we have made tens of thousands of children happy with hundreds of thousands of toys.
-                <a href="">More About Us</a>
+                <p class="a_green" th:text="#{inter.about.slogan}">All You Need is Fun!</p>
+                <h1 th:text="#{inter.about.intro}">Introducing ConstStore</h1>
+                <span th:text="#{inter.about.intro.text}">Our store has a rich history of 10 years. During this time, we have made tens of thousands of children happy with hundreds of thousands of toys.</span>
+                <a href="" th:text="#{inter.about.intro.more}">More About Us</a>
             </div>
             <img class="back" th:src="@{/media/5f8f84f3d4d23a5f74f2fcaf_about-image.jpg}">
-            <h1 class="margin">It will be one of the greatest activity for your child</h1>
+            <h1 class="margin" th:text="#{inter.about.intro.slogan}">It will be one of the greatest activity for your child</h1>
             <div class="banner">
                 <div class="b_info">
-                    <h1>Beautifully Designed</h1>
-                    Our best designers work day and night to make our toys as pleasant and fun as possible for your child. Each of them is a work of children's art.
+                    <h1 th:text="#{inter.about.banner.a.main}">Beautifully Designed</h1>
+                    <span th:text="#{inter.about.banner.a.text}">Our best designers work day and night to make our toys as pleasant and fun as possible for your child. Each of them is a work of children's art.</span>
                     <p></p>
-                    <a class="button" th:href="@{/catalog}">Get It Now!</a>
+                    <a class="button" th:href="@{/catalog}" th:text="#{inter.about.banner.a.btn}">Get It Now!</a>
                 </div>
                 <img class="move" th:src="@{/media/insta/5f8f84f3d4d23a6c9cf2fcb1_side-image-01.jpg}">
             </div>
             <div class="banner">
                 <img class="move" th:src="@{/media/insta/5f8f84f3d4d23a618af2fcb0_side-image-02.jpg}">
                 <div class="b_info">
-                    <h1>Beautifully Designed</h1>
-                    Our best designers work day and night to make our toys as pleasant and fun as possible for your child. Each of them is a work of children's art.
+                    <h1 th:text="#{inter.about.banner.b.main}">Beautifully Designed</h1>
+                    <span th:text="#{inter.about.banner.b.text}">Our best designers work day and night to make our toys as pleasant and fun as possible for your child. Each of them is a work of children's art.</span>
                     <p></p>
-                    <a class="button" th:href="@{/catalog}">Get It Now!</a>
+                    <a class="button" th:href="@{/catalog}" th:text="#{inter.about.banner.b.btn}">Get It Now!</a>
                 </div>
             </div>
             <div class="story">
-                About The Shop
-                <h1>Watch Our Story</h1>
-                Is's great story about our age, heroism and total dedication. You will not regret the time spent.
-                <button onclick="myFunction();return false;">Click me </button>
-                
+                <span th:text="#{inter.about.story.title}">About The Shop</span>
+                <h1 th:text="#{inter.about.story.slogan}">Watch Our Story</h1>
+                <span th:text="#{inter.about.story.text}">Is's great story about our age, heroism and total dedication. You will not regret the time spent.</span>
+                <button onclick="myFunction();return false;" th:text="#{inter.about.story.btn}">Click me</button>
             </div>
             <div id="video"></div>
         </div>

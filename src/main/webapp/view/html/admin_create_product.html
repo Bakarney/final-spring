@@ -6,7 +6,7 @@
     <link type="text/css" rel="stylesheet" th:href="@{/css/main.css}">
 	<link type="text/css" rel="stylesheet" th:href="@{/css/menu.css}">
     <link type="text/css" rel="stylesheet" th:href="@{/css/admin.css}">
-	<title>Create product</title>
+	<title th:text="#{inter.admin_create_product.title}">Create product</title>
 </head>
 <body>
 	<div th:replace="/admin_header"></div>
@@ -15,35 +15,35 @@
         <form class="folder" method="POST" th:action="@{/create_product}">
             <table>
                 <tr>
-                    <th>Name</th>
+                    <th th:text="#{inter.admin_create_product.name}">Name</th>
                     <th><input name="name" type="text"></th>
                 </tr>
                 <tr>
-                    <th>Category</th>
+                    <th th:text="#{inter.admin_create_product.category}">Category</th>
                     <th><input name="category" type="text"></th>
                 </tr>
                 <tr>
-                    <th>Gender</th>
+                    <th th:text="#{inter.admin_create_product.gender}">Gender</th>
                     <th><input name="gender" type="text"></th>
                 </tr>
                 <tr>
-                    <th>Producer</th>
+                    <th th:text="#{inter.admin_create_product.producer}">Producer</th>
                     <th><input name="producer" type="text"></th>
                 </tr>
                 <tr>
-                    <th>Number</th>
+                    <th th:text="#{inter.admin_create_product.number}">Number</th>
                     <th><input name="number" type="number"></th>
                 </tr>
                 <tr>
-                    <th>Price</th>
+                    <th th:text="#{inter.admin_create_product.price}">Price</th>
                     <th><input name="price" type="number"></th>
                 </tr>
                 <tr>
-                    <th>Photo</th>
+                    <th th:text="#{inter.admin_create_product.photo}">Photo</th>
                     <th><input name="photo" type="file"></th>
                 </tr>
             </table>
-            <input class="button" type="submit" value="Create">
+            <input class="button" type="submit" th:value="#{inter.admin_create_product.create}">
         </form>
     </div>
 </body>

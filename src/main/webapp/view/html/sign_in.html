@@ -7,20 +7,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <link type="text/css" rel="stylesheet" th:href="@{/css/main.css}">
     <link type="text/css" rel="stylesheet" th:href="@{/css/sign_in.css}">
-    <script src="main.js"></script>
-    <title>Document</title>
+    <title th:text="#{inter.sign_in.title}">Sign in</title>
 </head>
 <body>
     <div th:replace="/header"></div>
     <div class="body">
         <form class="sign_in_form" method="POST" th:action="@{/sign_in}">
-            <p>Sign in</p>
+            <p th:text="#{inter.sign_in.form}">Sign in</p>
             <span th:if="${#request.getParameter('error')}" th:text="${#request.getParameter('error')}">Error</span>
-            <input name="email" class="input" type="email" placeholder="Email">
-            <input name="password" class="input" type="password" placeholder="Password">
+            <input name="email" class="input" type="email"  th:placeholder="#{inter.sign_in.input.email}">
+            <input name="password" class="input" type="password"  th:placeholder="#{inter.sign_in.input.password}">
             <div class="buttons">
-                <a class="button a_button" th:href="@{/sign_up}">Sign up</a>
-                <input class="button" type="submit" value="Sign in">
+                <a class="button a_button" th:href="@{/sign_up}" th:text="#{inter.sign_in.up}">Sign up</a>
+                <input class="button" type="submit" th:value="#{inter.sign_in.in}">
             </div>
         </form>
     </div>

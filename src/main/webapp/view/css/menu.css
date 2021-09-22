@@ -31,7 +31,7 @@
     height: 2px;
 }
 .menu__btn > span::after {
-    content: "Filter";
+    content: "Y";
     top: 8px;
 }
 /* контейнер меню */
@@ -69,7 +69,7 @@
     background-color: #CFD8DC;
 }
 #menu__toggle:checked ~ .menu__btn > span::after {
-    content: "Close";
+    content: "X";
 }
 #menu__toggle:checked ~ .menu__btn {
 	position: fixed;

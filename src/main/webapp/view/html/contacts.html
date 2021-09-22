@@ -6,37 +6,36 @@
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <link type="text/css" rel="stylesheet" th:href="@{/css/main.css}">
     <link type="text/css" rel="stylesheet" th:href="@{/css/contacts.css}">
-    <script src="../main.js"></script>
-    <title>Contacts</title>
+    <title th:text="#{inter.contacts.title}">Contacts</title>
 </head>
 <body>
     <div th:replace="/header"></div>
     <div class="body">
         <div class="blank"></div>
         <div class="navigation">
-            <a th:href="@{/home}">Home</a>
+            <a th:href="@{/home}" th:text="#{inter.contacts.nav.home}">Home</a>
             <img th:src="@{/media/5f8f84f3d4d23a31c1f2fcae_arrow-right-mini-icon.svg}">
-            Contacts
+            <span th:text="#{inter.contacts.nav.contacts}">Contacts</span>
         </div>
         <div class="all">
             <iframe class="a_maps" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2540.98861737099!2d30.502796915731007!3d50.441312679474144!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4cef08e0df497%3A0xc6f4c41b38d10a5c!2z0LLRg9C70LjRhtGPINCb0YzQstCwINCi0L7Qu9GB0YLQvtCz0L4sINCa0LjRl9CyLCAwMjAwMA!5e0!3m2!1suk!2sua!4v1606785124053!5m2!1suk!2sua" ></iframe>
             <div class="a_info">
                 <form method="POST" class="a_i_form">
-                    <h1>Leave a Message</h1>
-                    <label>Full Name</label>
-                    <input class="a_i_f_text" type="text" placeholder="Enter your name">
-                    <label>Email Address</label>
-                    <input class="a_i_f_text" type="email" placeholder="Your contact email">
-                    <label>Message</label>
-                    <textarea class="a_i_f_area" placeholder="Message text"></textarea>
-                    <button type="submit">Send Message</button>
+                    <h1 th:text="#{inter.contacts.message.title}">Leave a Message</h1>
+                    <label th:text="#{inter.contacts.message.name.label}">Full Name</label>
+                    <input class="a_i_f_text" type="text" th:placeholder="#{inter.contacts.message.name.input}">
+                    <label th:text="#{inter.contacts.message.email.label}">Email Address</label>
+                    <input class="a_i_f_text" type="email" th:placeholder="#{inter.contacts.message.email.input}">
+                    <label th:text="#{inter.contacts.message.text.label}">Message</label>
+                    <textarea class="a_i_f_area" th:placeholder="#{inter.contacts.message.text.input}"></textarea>
+                    <button type="submit" th:text="#{inter.contacts.message.btn}">Send Message</button>
                 </form>
                 <div class="a_i_info">
-                    <h1>Contact Info</h1>
-                    01001 Kyiv, Khreshchatyk 101a<br>
-                    +044 123-78-93
-                    <div class="b">conststore@gmail.com</div>
-                    <h2>Follow Us</h2>
+                    <h1 th:text="#{inter.contacts.info.title}">Contact Info</h1>
+                    <span th:text="#{inter.contacts.info.adress}">01001 Kyiv, Khreshchatyk 101a</span><br>
+                    <span th:text="#{inter.contacts.info.phone}">+044 123-78-93</span>
+                    <div class="b" th:text="#{inter.contacts.info.email}">conststore@gmail.com</div>
+                    <h2 th:text="#{inter.contacts.info.socials}">Follow Us</h2>
                     <div class="a_i_i_socials">
                         <a class="twitter" href=""><img th:src="@{/media/social/twitter.svg}"></a>
                         <a class="facebook" href=""><img th:src="@{/media/social/facebook.svg}"></a>

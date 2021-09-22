@@ -123,6 +123,18 @@
 .panel {
 	display: flex;
 }
-
-
-
+.lang {
+	display: flex;
+}
+.lang_link {
+	color: white;
+	text-decoration: none;
+	border: none;
+	background: none;
+	font-family: Varela Round;
+	font-size: 16px;
+}
+.lang_link:hover {
+	text-decoration: underline;
+	cursor: pointer;
+}

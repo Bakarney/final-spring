@@ -6,36 +6,35 @@
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <link type="text/css" th:href="@{/css/main.css}" rel="stylesheet">
     <link type="text/css" th:href="@{/css/home.css}" rel="stylesheet">
-    <script src="main.js"></script>
-    <title>Home</title>
+    <title th:text="#{inter.home.title}">Home</title>
 </head>
 <body>
     <div th:replace="/header"></div>
 	<div class="body">
         <div class="welcome">
-            <h1>Welcome on territory of fun</h1>
-            <a class="button" th:href="@{/catalog}">Open Catalog</a>
+            <h1 th:text="#{inter.home.welcome}">Welcome on territory of fun</h1>
+            <a class="button" th:href="@{/catalog}" th:text="#{inter.home.catalog.btn}">Open Catalog</a>
         </div>
         <div class="two">
             <div class="t_plastic">
                 <img th:src="@{/media/plastic toys/train.png}">
                 <div class="t_p_text">
-                    <h1>Plastic Constructor</h1>
-                    <a class="button" th:href="@{/catalog}">Shop Now</a>
+                    <h1 th:text="#{inter.home.catalog.plastic}">Plastic Constructor</h1>
+                    <a class="button" th:href="@{/catalog}" th:text="#{inter.home.catalog.plastic.btn}">Shop Now</a>
                 </div>
             </div>
             <div class="t_wooden">
                 <div class="t_w_text">
-                    <h1>Wooden Constructor</h1>
-                    <a class="button" th:href="@{/catalog}">Shop Now</a>
+                    <h1 th:text="#{inter.home.catalog.wood}">Wooden Constructor</h1>
+                    <a class="button" th:href="@{/catalog}" th:text="#{inter.home.catalog.wood.btn}">Shop Now</a>
                 </div>
                 <img th:src="@{/media/wooden toys/flower.png}">
             </div>
         </div>
         <div class="plastic">
             <div class="p_header">
-                <h1>Plastic constructor</h1>
-                <a th:href="@{/catalog}" class="p_h_link">See All Toys<img th:src="@{/media/5f8f84f3d4d23a31c1f2fcae_arrow-right-mini-icon.svg}"></a>
+                <h1 th:text="#{inter.home.plastic}">Plastic Toys</h1>
+                <a th:href="@{/catalog}" class="p_h_link" th:text="#{inter.home.plastic.all}">See All Toys<img th:src="@{/media/5f8f84f3d4d23a31c1f2fcae_arrow-right-mini-icon.svg}"></a>
             </div>
             <div class="showcase">
                 <div class="s_row">
@@ -72,8 +71,8 @@
         </div>
         <div class="plastic">
             <div class="p_header">
-                <h1>Wooden Toys</h1>
-                <a th:href="@{/catalog}" class="p_h_link">See All Toys<img th:src="@{/media/5f8f84f3d4d23a31c1f2fcae_arrow-right-mini-icon.svg}"></a>
+                <h1 th:text="#{inter.home.wood}">Wooden Toys</h1>
+                <a th:href="@{/catalog}" class="p_h_link" th:text="#{inter.home.wood.all}">See All Toys<img th:src="@{/media/5f8f84f3d4d23a31c1f2fcae_arrow-right-mini-icon.svg}"></a>
             </div>
             <div class="showcase">
                 <div class="s_row">
@@ -109,18 +108,18 @@
             </div>
         </div>
         <div class="story">
-            About The Shop
-            <h1>Watch Our Story</h1>
-            Is's great story about courage, heroism and total dedication. You will not regret the time spent.
-            <button onclick="myFunction();return false;">Click me </button>
+            <span th:text="#{inter.home.story.title}"> About The Shop</span>
+            <h1 th:text="#{inter.home.story.slogan}">Watch Our Story</h1>
+            <span th:text="#{inter.home.story.text}">Is's great story about courage, heroism and total dedication. You will not regret the time spent.</span>
+            <button onclick="myFunction();return false;" th:text="#{inter.home.story.btn}">Click me </button>
         </div>
         <div class="video" id="video"></div>
-        <h1 class="text">Simple & Colorful Playtime for All Family</h1>
+        <h1 class="text" th:text="#{inter.home.slogan.a}">Simple & Colorful Playtime for All Family</h1>
         <div class="ad">
             <div class="a_info">
-                <h1>Don't waste you time!</h1>
-                <p>We have special offers for fun activities for the whole family. The Game Set features several games suitable for everyone, young and old.It includes board games such as Jenga and Wolves and Sheep, as well as two wooden construction sets with fully functioning mechanisms.</p>
-                <a class="button" href="">GET IT NOW!</a>
+                <h1 th:text="#{inter.home.slogan.b}">Don't waste you time!</h1>
+                <p th:text="#{inter.home.slogan.b.text}">We have special offers for fun activities for the whole family. The Game Set features several games suitable for everyone, young and old.It includes board games such as Jenga and Wolves and Sheep, as well as two wooden construction sets with fully functioning mechanisms.</p>
+                <a class="button" href="" th:text="#{inter.home.slogan.btn}">GET IT NOW!</a>
             </div>
             <img th:src="@{/media/5f8f8d03a222a54f11c1161e_26318.jpg}">
         </div>

@@ -7,7 +7,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <link type="text/css" rel="stylesheet" th:href="@{/css/main.css}">
     <link type="text/css" rel="stylesheet" th:href="@{/css/profile.css}">
-    <script src="main.js"></script>
     <title th:text="${session.user.getName()}">User</title>
 </head>
 <body>
@@ -16,11 +15,11 @@
         <div class="folder">
             <div class="data">
                 <div class="fields">
-                    <p>Name:</p>
-                    <p>Email:</p>
-                    <p>Phone:</p>
-                    <p>Address:</p>
-                    <p>Card:</p>
+                    <p th:text="#{inter.profile.name}">Name:</p>
+                    <p th:text="#{inter.profile.email}">Email:</p>
+                    <p th:text="#{inter.profile.phone}">Phone:</p>
+                    <p th:text="#{inter.profile.address}">Address:</p>
+                    <p th:text="#{inter.profile.card}">Card:</p>
                 </div>
                 <div class="info">
                     <p th:text="${session.user.getName()}">Name</p>
@@ -31,7 +30,7 @@
                 </div>
             </div>
             <form method="POST" th:action="@{/sign_out}">
-            	<input class="button" type="submit" value="Sign Out">
+            	<input class="button" type="submit" th:value="#{inter.profile.out}">
             </form>
         </div>
     </div>

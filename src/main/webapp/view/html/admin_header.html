@@ -6,31 +6,34 @@
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <link type="text/css" rel="stylesheet" th:href="@{/css/main.css}">
     <link type="text/css" rel="stylesheet" th:href="@{/css/header.css}">
-    <script src="main.js"></script>
-    <title>Header</title>
+    <title th:text="#{inter.admin_header.title}">Header</title>
 </head>
 <body>
     <div class="header">
         <div class="green_head">
-            <div class="social">
-                <a href=""><img th:src="@{/media/social/twitter.svg}"></a>
-                <a href=""><img th:src="@{/media/social/facebook.svg}"></a>
-                <a href=""><img th:src="@{/media/social/instagram.svg}"></a>
-                <a href=""><img th:src="@{/media/social/pinterest.svg}"></a>
-                <a href=""><img th:src="@{/media/social/youtube.svg}"></a>
+        	<div class="lang">
+            	<form>
+            		<input type="hidden" name="lang" value="ua">
+            		<input class="lang_link" type="submit" value="UA">
+            	</form>
+            	|
+            	<form>
+            		<input type="hidden" name="lang" value="en">
+            		<input class="lang_link" type="submit" value="EN">
+            	</form>
             </div>
             <form method="POST" th:action="@{/sign_out}" class="profile">
-            	<input type="submit" class="simple_btn" value="Sign out">
+            	<input type="submit" class="simple_btn" th:value="#{inter.admin_header.out}">
             </form>
         </div>
         <div class="white_head">
             <h1>ConstStore</h1>
             <div class="w_h_links">
-                <a th:href="@{/admin_catalog}">Catalog</a>
-                <a th:href="@{/admin_users}">Users</a>
-                <a th:href="@{/admin_categories}">Categories</a>
-                <a th:href="@{/admin_producers}">Producers</a>
-                <a th:href="@{/admin_orders}">Orders</a>
+                <a th:href="@{/admin_catalog}" th:text="#{inter.admin_header.link.a}">Catalog</a>
+                <a th:href="@{/admin_users}" th:text="#{inter.admin_header.link.b}">Users</a>
+                <a th:href="@{/admin_categories}" th:text="#{inter.admin_header.link.c}">Categories</a>
+                <a th:href="@{/admin_producers}" th:text="#{inter.admin_header.link.d}">Producers</a>
+                <a th:href="@{/admin_orders}" th:text="#{inter.admin_header.link.e}">Orders</a>
             </div>
             <div class="w_h_blank"></div>
         </div>

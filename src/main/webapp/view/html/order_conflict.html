@@ -5,23 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
 	<link type="text/css" rel="stylesheet" th:href="@{/css/order_conflict.css}">
-	<title>Order conflict</title>
+	<title th:text="#{inter.conflict.title}">Order conflict</title>
 </head>
 <body>
 	<div class="folder">
         <div class="data">
-            <h1 class="info">Conflict between local and cloud carts was found!</h1>
+            <h1 class="info" th:text="#{inter.conflict.text}">Conflict between local and cloud carts was found!</h1>
             <div class="tables">
                 <div class="table">
-                    <h1>Local cart</h1>
+                    <h1 th:text="#{inter.conflict.local}">Local cart</h1>
                     <table>
                         <tr>
-                            <th>Name</th>
-                            <th>Category</th>
-                            <th>Gender</th>
-                            <th>Producer</th>
-                            <th>Price</th>
-                            <th>Photo</th>
+                            <th th:text="#{inter.conflict.name}">Name</th>
+                            <th th:text="#{inter.conflict.category}">Category</th>
+                            <th th:text="#{inter.conflict.gender}">Gender</th>
+                            <th th:text="#{inter.conflict.producer}">Producer</th>
+                            <th th:text="#{inter.conflict.price}">Price</th>
+                            <th th:text="#{inter.conflict.photo}">Photo</th>
                         </tr>
                         <tr th:each="product : ${local_products}">
                         	<td th:text="${product.getName()}">Name</td>
@@ -34,15 +34,15 @@
                     </table>
                 </div>
                 <div class="table">
-                    <h1>Cloud cart</h1>
+                    <h1 th:text="#{inter.conflict.cloud}">Cloud cart</h1>
                     <table>
                         <tr>
-                            <th>Name</th>
-                            <th>Category</th>
-                            <th>Gender</th>
-                            <th>Producer</th>
-                            <th>Price</th>
-                            <th>Photo</th>
+                            <th th:text="#{inter.conflict.name}">Name</th>
+                            <th th:text="#{inter.conflict.category}">Category</th>
+                            <th th:text="#{inter.conflict.gender}">Gender</th>
+                            <th th:text="#{inter.conflict.producer}">Producer</th>
+                            <th th:text="#{inter.conflict.price}">Price</th>
+                            <th th:text="#{inter.conflict.photo}">Photo</th>
                         </tr>
                         <tr th:each="product : ${cloud_products}">
                         	<td th:text="${product.getName()}">Name</td>
@@ -59,15 +59,15 @@
         <div class="buttons">
             <form method="POST" th:action="@{/manage_carts}">
                 <input type="hidden" name="command" value="local">
-                <input type="submit" class="button" value="Save local">
+                <input type="submit" class="button" th:value="#{inter.conflict.local.save}">
             </form>
             <form method="POST" th:action="@{/manage_carts}">
                 <input type="hidden" name="command" value="cloud">
-                <input type="submit" class="button" value="Save cloud">
+                <input type="submit" class="button" th:value="#{inter.conflict.cloud.save}">
             </form>
             <form method="POST" th:action="@{/manage_carts}">
                 <input type="hidden" name="command" value="combine">
-                <input type="submit" class="button" value="Combine local and cloud">
+                <input type="submit" class="button" th:value="#{inter.conflict.combine.save}">
             </form>
         </div>
     </div>

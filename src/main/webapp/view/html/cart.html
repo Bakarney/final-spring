@@ -6,7 +6,7 @@
     <link type="text/css" rel="stylesheet" th:href="@{/css/main.css}">
 	<link type="text/css" rel="stylesheet" th:href="@{/css/menu.css}">
     <link type="text/css" rel="stylesheet" th:href="@{/css/admin.css}">
-	<title>Cart</title>
+	<title th:text="#{inter.cart.title}">Cart</title>
 </head>
 <body>
 	<div th:replace="/header"></div>
@@ -14,12 +14,12 @@
         <div class="folder">
             <table>
                 <tr>
-                    <th>Name</th>
-                    <th>Category</th>
-                    <th>Gender</th>
-                    <th>Producer</th>
-                    <th>Price</th>
-                    <th>Photo</th>
+                    <th th:text="#{inter.cart.name}">Name</th>
+                    <th th:text="#{inter.cart.category}">Category</th>
+                    <th th:text="#{inter.cart.gender}">Gender</th>
+                    <th th:text="#{inter.cart.producer}">Producer</th>
+                    <th th:text="#{inter.cart.price}">Price</th>
+                    <th th:text="#{inter.cart.photo}">Photo</th>
                 </tr>
 			    <tr th:each="product : ${products}">
 			    	<td th:text="${product.getName()}">Name</td>
@@ -32,14 +32,14 @@
                     </td>
                     <td>
                     	<form method="POST" th:action="@{/remove_product?id={id}(id=${product.getId()})}">
-                    		<input type="submit" class="link" value="Delete"></input>
+                    		<input type="submit" class="link" th:value="#{inter.cart.delete}"></input>
                     	</form>
                     </td>
                 </tr>
             </table>
             <form method="POST" th:action="@{/confirm_order}">
             	<input type="hidden" name="order_id" th:value="${session.order} ? ${session.order.getId()} : ''">
-            	<input class="button" type="submit" value="Buy">
+            	<input class="button" type="submit" th:value="#{inter.cart.buy}">
             </form>
         </div>
     </div>

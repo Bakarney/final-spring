@@ -7,8 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <link type="text/css" rel="stylesheet" th:href="@{/css/main.css}">
     <link type="text/css" rel="stylesheet" th:href="@{/css/sign_up.css}">
-    <script src="main.js"></script>
-    <title>Sign up</title>
+    <title th:text="#{inter.sign_up.title}">Sign up</title>
 </head>
 <body>
     <div th:replace="/header"></div>
@@ -17,12 +16,12 @@
             <div class="main">
                 <div class="data">
                     <div class="fields">
-                        <p>Name:</p>
-                        <p>Email:</p>
-                        <p>Password:</p>
-                        <p>Phone:</p>
-                        <p>Address:</p>
-                        <p>Card:</p>
+                        <p th:text="#{inter.sign_up.name}">Name:</p>
+                        <p th:text="#{inter.sign_up.email}">Email:</p>
+                        <p th:text="#{inter.sign_up.password}">Password:</p>
+                        <p th:text="#{inter.sign_up.phone}">Phone:</p>
+                        <p th:text="#{inter.sign_up.address}">Address:</p>
+                        <p th:text="#{inter.sign_up.card}">Card:</p>
                     </div>
                     <div class="info">
                         <input name="name" class="input" type="text">
@@ -34,7 +33,7 @@
                     </div>
                 </div>
             </div>
-            <input class="button" type="submit" value="Sign up">
+            <input class="button" type="submit" th:value="#{inter.sign_up.btn}">
         </form>
     </div>
 </body>

@@ -6,22 +6,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <link type="text/css" rel="stylesheet" th:href="@{/css/main.css}">
     <link type="text/css" rel="stylesheet" th:href="@{/css/header.css}">
-    <script src="main.js"></script>
-    <title>Header</title>
+    <title th:text="#{inter.header.title}">Header</title>
 </head>
 <body>
     <div class="header">
         <div class="green_head">
-            <div class="social">
-                <a href=""><img th:src="@{/media/social/twitter.svg}"></a>
-                <a href=""><img th:src="@{/media/social/facebook.svg}"></a>
-                <a href=""><img th:src="@{/media/social/instagram.svg}"></a>
-                <a href=""><img th:src="@{/media/social/pinterest.svg}"></a>
-                <a href=""><img th:src="@{/media/social/youtube.svg}"></a>
+        	<div class="lang">
+            	<form>
+            		<input type="hidden" name="lang" value="ua">
+            		<input class="lang_link" type="submit" value="UA">
+            	</form>
+            	|
+            	<form>
+            		<input type="hidden" name="lang" value="en">
+            		<input class="lang_link" type="submit" value="EN">
+            	</form>
             </div>
             <div th:unless="${session.user}" class="panel">
             	<a th:href="@{/sign_in}" class="profile_link">
-            		<p>Sign in</p>
+            		<p th:text="#{inter.header.sign_in}">Sign in</p>
             	</a>
             </div>
             <div th:if="${session.user}" class="panel">
@@ -29,21 +32,21 @@
             		<p th:text="${session.user.getName()}">Profile</p>
             	</a>
             	<form class="form" method="POST" th:action="@{/sign_out}">
-                 	<input type="submit" class="profile" value="Sign out"></input>
+                 	<input type="submit" class="profile" th:value="#{inter.header.sign_out}"></input>
                 </form>
             </div>
       	</div>
         <div class="white_head">
-            <h1>ConstStore</h1>
+            <h1 th:text="#{inter.header.shop}">ConstStore</h1>
             <div class="w_h_links">
-                <a th:href="@{/catalog}">Catalog</a>
-                <a th:href="@{/delivery}">Delivery</a>
-                <a th:href="@{/about}">About</a>
-                <a th:href="@{/contacts}">Contacts</a>
+                <a th:href="@{/catalog}" th:text="#{inter.header.link.a}">Catalog</a>
+                <a th:href="@{/delivery}" th:text="#{inter.header.link.b}">Delivery</a>
+                <a th:href="@{/about}" th:text="#{inter.header.link.c}">About</a>
+                <a th:href="@{/contacts}" th:text="#{inter.header.link.d}">Contacts</a>
             </div>
             <div class="w_h_blank"></div>
             <a class="w_h_cart" th:href="@{/cart}">
-            	<div class="w_h_c_text">
+            	<div class="w_h_c_text" th:text="#{inter.header.cart}">
             		Cart
             	</div>
             	<img th:src="@{/media/cart.svg}">

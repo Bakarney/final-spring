@@ -7,36 +7,36 @@
     <link type="text/css" rel="stylesheet" th:href="@{/css/main.css}">
     <link type="text/css" rel="stylesheet" th:href="@{/css/delivery.css}">
     <script src="main.js"></script>
-    <title>Delivery</title>
+    <title th:text="#{inter.delivery.title}">Delivery</title>
 </head>
 <body>
     <div th:replace="/header"></div>
     <div class="body">
         <div class="blank"></div>
         <div class="navigation">
-            <a th:href="@{/home}">Home</a>
+            <a th:href="@{/home}" th:text="#{inter.delivery.nav.home}">Home</a>
             <img th:src="@{/media/5f8f84f3d4d23a31c1f2fcae_arrow-right-mini-icon.svg}">
-            Delivery
+            <span th:text="#{inter.delivery.nav.delivery}">Delivery</span>
         </div>
         <div class="all">
             <div class="a_info">
-                <h1>Delivery Info</h1>
-                Delivery across Ukraine is carried out by the carrier New mail. Delivery by other carriers is agreed upon individually. The buyer pays for shipping. The cost of delivery by the Carrier on the territory of Ukraine depends on the volume and weight of the ordered goods and is calculated by the carrier separately in each specific case. Shipment of goods by New mail is carried out within 1-2 working days after confirming the order with the manager.
-                <h1>Courier delivery across Kiev</h1>
-                The cost of delivery in Kiev for small-sized goods is indicated when placing an order. The cost of delivery of bulky goods (bags, pears, etc.) is agreed individually. In Kiev, delivery of most goods is carried out from 09:00 to 19:00 on weekdays, from 10:00 to 18:00 on Saturday.
-                <h1>Delivery of bulky goods</h1>
-                Delivery of bulky goods (bags, heavy pears, medballs) is carried out on a 100% prepayment basis.Delivery can be carried out by the carrier Nova Poshta to the warehouse or to the address. Shipping cost is paid by the buyer separately when receiving the goods.
-                <h1>Other conditions</h1>
+                <h1 th:text="#{inter.delivery.info}">Delivery Info</h1>
+                <span th:text="#{inter.delivery.info.text}">Delivery across Ukraine is carried out by the carrier New mail. Delivery by other carriers is agreed upon individually. The buyer pays for shipping. The cost of delivery by the Carrier on the territory of Ukraine depends on the volume and weight of the ordered goods and is calculated by the carrier separately in each specific case. Shipment of goods by New mail is carried out within 1-2 working days after confirming the order with the manager.</span>
+                <h1 th:text="#{inter.delivery.info.a}">Courier delivery across Kiev</h1>
+                <span th:text="#{inter.delivery.info.a.text}">The cost of delivery in Kiev for small-sized goods is indicated when placing an order. The cost of delivery of bulky goods (bags, pears, etc.) is agreed individually. In Kiev, delivery of most goods is carried out from 09:00 to 19:00 on weekdays, from 10:00 to 18:00 on Saturday.</span>
+                <h1 th:text="#{inter.delivery.info.b}">Delivery of bulky goods</h1>
+                <span th:text="#{inter.delivery.info.b.text}">Delivery of bulky goods (bags, heavy pears, medballs) is carried out on a 100% prepayment basis.Delivery can be carried out by the carrier Nova Poshta to the warehouse or to the address. Shipping cost is paid by the buyer separately when receiving the goods.</span>
+                <h1 th:text="#{inter.delivery.info.other}">Other conditions</h1>
                 <ul>
-                    <li>Orders up to UAH 300 are sent only on terms of 100% prepayment.</li>
-                    <li>Some groups of goods are shipped with partial prepayment only.</li>
-                    <li>The order and cost of delivery of large-sized goods is carried out in agreement with the managers of the online store. Delivery of bulky goods is carried out after 100% prepayment.</li>
-                    <li>The order and cost of delivery of bulk orders is negotiated individually.</li>
+                    <li th:text="#{inter.delivery.info.other.a}">Orders up to UAH 300 are sent only on terms of 100% prepayment.</li>
+                    <li th:text="#{inter.delivery.info.other.b}">Some groups of goods are shipped with partial prepayment only.</li>
+                    <li th:text="#{inter.delivery.info.other.c}">The order and cost of delivery of large-sized goods is carried out in agreement with the managers of the online store. Delivery of bulky goods is carried out after 100% prepayment.</li>
+                    <li th:text="#{inter.delivery.info.other.d}">The order and cost of delivery of bulk orders is negotiated individually.</li>
                 </ul>
             </div>
             <div class="a_link">
-                <h2>Can't Find the Answer to Your Question?</h2>
-                <a class="button" th:href="@{/contacts}">Contact Us</a>
+                <h2 th:text="#{inter.delivery.question}">Can't Find the Answer to Your Question?</h2>
+                <a class="button" th:href="@{/contacts}" th:text="#{inter.delivery.contact}">Contact Us</a>
             </div>
         </div>
         <div th:replace="/footer"></div>
