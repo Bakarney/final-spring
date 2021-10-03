@@ -49,16 +49,16 @@ public class BuildAdminOrders implements Command {
 					tmpOrder.setState(order.getState());
 					tmpOrder.setCart(order.getCart());
 				} else {
-					tmpOrder.setCart(new ArrayList<>());
+					tmpOrder.setCart(new ArrayList<Integer>());
 					tmpOrder.getCart().add(i);
 				}
 				preparedOrders.add(tmpOrder);
 			}
 		}
 		
-		request.setAttribute("orders", preparedOrders);
-		request.setAttribute("products", products);
-		request.setAttribute("users", users);
+		model.addAttribute("orders", preparedOrders);
+		model.addAttribute("products", products);
+		model.addAttribute("users", users);
 	}
 
 }

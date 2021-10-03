@@ -18,8 +18,10 @@ public class CatalogChangePage implements Command {
 		int page = (pageStr != null) ? Integer.valueOf(pageStr) : 1;
 		
 		String query = request.getQueryString();
-		if (query == null) query = "";
-		query = query.replaceAll("&?page=-?\\d+", "");
+		if (query == null) 
+			query = "";
+		else 
+			query = query.replaceAll("&?page=-?\\d+", "");
 		if (!query.isEmpty()) query += "&";
 		query += "page=" + (page+change);
 		

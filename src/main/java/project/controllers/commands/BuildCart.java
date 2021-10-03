@@ -19,17 +19,19 @@ public class BuildCart implements Command {
 	
 	private OrderDAO orderDAO;
 	private ProductDAO productDAO;
+	private UserDAO userDAO;
 
 	@Autowired
-	public BuildCart(OrderDAO orderDAO, ProductDAO productDAO) {
+	public BuildCart(OrderDAO orderDAO, ProductDAO productDAO, UserDAO userDAO) {
 		this.orderDAO = orderDAO;
 		this.productDAO = productDAO;
+		this.userDAO = userDAO;
 	}
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
 		HttpSession session = request.getSession();
-		User user = (User)session.getAttribute("user");
+		User user = userDAO.get(request.getUserPrincipal().getName());
 		Order order;
 		List<Product> products = new ArrayList<>();
 		

@@ -15,7 +15,7 @@
         <form class="sign_in_form" method="POST" th:action="@{/sign_in}">
             <p th:text="#{inter.sign_in.form}">Sign in</p>
             <span th:if="${#request.getParameter('error')}" th:text="${#request.getParameter('error')}">Error</span>
-            <input name="email" class="input" type="email"  th:placeholder="#{inter.sign_in.input.email}">
+            <input name="username" class="input" type="email"  th:placeholder="#{inter.sign_in.input.email}">
             <input name="password" class="input" type="password"  th:placeholder="#{inter.sign_in.input.password}">
             <div class="buttons">
                 <a class="button a_button" th:href="@{/sign_up}" th:text="#{inter.sign_in.up}">Sign up</a>

@@ -49,7 +49,7 @@ public class BuildCatalog implements Command {
 		List<List<Product>> listProducts = new ArrayList<>();
 		for (int i = 0; i < products.size(); i++) {
 			if ((i+1)%ROW_LENGTH == 1) 
-				listProducts.add(new ArrayList<>());
+				listProducts.add(new ArrayList<Product>());
 			listProducts.get(listProducts.size() - 1).add(products.get(i));
 		}
 		model.addAttribute("listProducts", listProducts);

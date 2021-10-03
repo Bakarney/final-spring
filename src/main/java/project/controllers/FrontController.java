@@ -1,5 +1,9 @@
 package project.controllers;
 
+import java.io.BufferedOutputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -8,16 +12,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
-import project.controllers.commands.CommandController;
+import project.controllers.commands.Invoker;
 
 @Controller
 public class FrontController {
 	
-	private CommandController command;
+	private Invoker command;
 	
 	@Autowired
-	public FrontController(CommandController command) {
+	public FrontController(Invoker command) {
 		this.command = command;
 	}
 	
@@ -80,7 +86,8 @@ public class FrontController {
 	}
 	
 	@GetMapping("/profile")
-	public String getProfile(HttpServletRequest request) {
+	public String getProfile(HttpServletRequest request, HttpServletResponse response, Model model) {
+		command.execute("buildProfile", request, response, model);
 		return "profile";
 	}
 	
@@ -161,13 +168,36 @@ public class FrontController {
 	}
 	
 	@PostMapping("/update_product")
-	public void updateProduct(HttpServletRequest request, HttpServletResponse response, Model model) {
+	public void updateProduct(@RequestParam CommonsMultipartFile file, HttpServletRequest request, HttpServletResponse response, Model model) {
+		try {
+			String path=request.getSession().getServletContext().getRealPath("/");
+			String filename=file.getOriginalFilename();
+	        byte barr[]=file.getBytes();
+	        BufferedOutputStream bout=new BufferedOutputStream(new FileOutputStream(path+"/"+filename));
+	        bout.write(barr);
+	        bout.flush();
+	        bout.close();
+	        model.addAttribute("file", filename);
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
 		command.execute("updateProduct", request, response, model);
 	}
 	
 	@PostMapping("/create_product")
-	public void createProduct(HttpServletRequest request, HttpServletResponse response, Model model) {
-		System.out.println(request.getParameter("name"));
+	public void createProduct(@RequestParam CommonsMultipartFile file, HttpServletRequest request, HttpServletResponse response, Model model) {
+		try {
+			String path=request.getSession().getServletContext().getRealPath("/");
+			String filename=file.getOriginalFilename();
+	        byte barr[]=file.getBytes();
+	        BufferedOutputStream bout=new BufferedOutputStream(new FileOutputStream(path+"/"+filename));
+	        bout.write(barr);
+	        bout.flush();
+	        bout.close();
+	        model.addAttribute("file", filename);
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
 		command.execute("createProduct", request, response, model);
 	}
 	

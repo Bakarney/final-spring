@@ -10,12 +10,12 @@ import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
 
 @Component
-public class CommandController {
+public class Invoker {
 	
 	private Map<String, Command> commands;
 	
 	@Autowired
-	public CommandController(Map<String, Command> commands) {
+	public Invoker(Map<String, Command> commands) {
 		this.commands = commands;
 	}
 	

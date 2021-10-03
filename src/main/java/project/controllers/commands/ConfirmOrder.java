@@ -15,18 +15,19 @@ import project.entities.*;
 public class ConfirmOrder implements Command {
 	
 	private OrderDAO orderDAO;
+	private UserDAO userDAO;
 
 	@Autowired
-	public ConfirmOrder(OrderDAO orderDAO) {
+	public ConfirmOrder(OrderDAO orderDAO, UserDAO userDAO) {
 		this.orderDAO = orderDAO;
+		this.userDAO = userDAO;
 	}
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
 		int id = Integer.valueOf(request.getParameter("order_id"));
-		System.out.println(id);
 		HttpSession session = request.getSession();
-		User user = (User)session.getAttribute("user");
+		User user = userDAO.get(request.getUserPrincipal().getName());
 		
 		if (user == null) {
 			response.sendRedirect("/final-spring/sign_in");

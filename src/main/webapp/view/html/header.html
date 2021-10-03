@@ -22,14 +22,14 @@
             		<input class="lang_link" type="submit" value="EN">
             	</form>
             </div>
-            <div th:unless="${session.user}" class="panel">
+            <div th:unless="${#request.getUserPrincipal()}" class="panel">
             	<a th:href="@{/sign_in}" class="profile_link">
             		<p th:text="#{inter.header.sign_in}">Sign in</p>
             	</a>
             </div>
-            <div th:if="${session.user}" class="panel">
+            <div th:if="${#request.getUserPrincipal()}" class="panel">
                 <a th:href="@{/profile}" class="profile_link">
-            		<p th:text="${session.user.getName()}">Profile</p>
+            		<p th:text="${#request.getUserPrincipal().getName()}">Profile</p>
             	</a>
             	<form class="form" method="POST" th:action="@{/sign_out}">
                  	<input type="submit" class="profile" th:value="#{inter.header.sign_out}"></input>

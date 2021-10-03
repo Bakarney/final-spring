@@ -30,11 +30,11 @@ public class OrderRemoveProduct implements Command {
 		
 		if (order.getCart().isEmpty()) {
 			session.removeAttribute("order");
-			if (session.getAttribute("user") != null)
+			if (request.getUserPrincipal() != null)
 				orderDAO.delete(order.getId());
 		} else {
 			session.setAttribute("order", order);
-			if (session.getAttribute("user") != null)
+			if (request.getUserPrincipal() != null)
 				orderDAO.removeProduct(order.getId(), id);
 		}
 		

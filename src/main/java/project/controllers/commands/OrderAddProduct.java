@@ -15,17 +15,19 @@ import project.entities.*;
 public class OrderAddProduct implements Command {
 
 	private OrderDAO orderDAO;
+	private UserDAO userDAO;
 	
 	@Autowired
-	public OrderAddProduct(OrderDAO orderDAO) {
+	public OrderAddProduct(OrderDAO orderDAO, UserDAO userDAO) {
 		this.orderDAO = orderDAO;
+		this.userDAO = userDAO;
 	}
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
 		int id = Integer.valueOf(request.getParameter("product_id"));
 		HttpSession session = request.getSession();
-		User user = (User)session.getAttribute("user");
+		User user = userDAO.get(request.getUserPrincipal().getName());
 		Order order;
 		
 		if (user != null) {

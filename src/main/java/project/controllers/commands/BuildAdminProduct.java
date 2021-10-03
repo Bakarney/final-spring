@@ -24,7 +24,7 @@ public class BuildAdminProduct implements Command {
 	public void execute(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
 		int id = Integer.valueOf(request.getParameter("id"));
 		Product prod = productDAO.get(id);
-		request.setAttribute("product", prod);
+		model.addAttribute("product", prod);
 	}
 
 }

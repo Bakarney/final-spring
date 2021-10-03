@@ -25,7 +25,7 @@ public class BuildAdminUsers implements Command {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
 		List<User> users = userDAO.getAll();
-		request.setAttribute("users", users);
+		model.addAttribute("users", users);
 	}
 
 }

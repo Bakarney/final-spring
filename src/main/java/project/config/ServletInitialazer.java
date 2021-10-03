@@ -3,7 +3,7 @@ package project.config;
 import javax.servlet.Filter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-import project.AuthTokenFilter;
+import project.LogingFilter;
 
 public class ServletInitialazer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
@@ -24,6 +24,6 @@ public class ServletInitialazer extends AbstractAnnotationConfigDispatcherServle
 	
 	@Override
     protected Filter[] getServletFilters() {
-        return new Filter[]{new AuthTokenFilter()};
+        return new Filter[]{new LogingFilter()};
     }
 }

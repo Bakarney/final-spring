@@ -36,13 +36,13 @@ public class BuildAdminCatalog implements Command {
 		String top = request.getParameter("top");
 		
 		List<Product> products = productDAO.getFiltered(categoriesData, producersData, gender, bot, top, sort, null, null);
-		request.setAttribute("products", products);
+		model.addAttribute("products", products);
 		
 		List<String> categories = categoryDAO.getAll();
-		request.setAttribute("categories", categories);
+		model.addAttribute("categories", categories);
 		
 		List<String> producers = producerDAO.getAll();
-		request.setAttribute("producers", producers);
+		model.addAttribute("producers", producers);
 	}
 
 }

@@ -1,18 +1,24 @@
 package project.DAO;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
 import project.DAO.mappers.BooleanMapper;
 import project.entities.User;
 
 @Component
-public class UserDAO {
+public class UserDAO implements UserDetailsService {
 	
 	private final JdbcTemplate jdbcTemplate;
 	
@@ -21,6 +27,31 @@ public class UserDAO {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 	
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		try {
+			final User user = get(username);
+			if (user == null)
+				throw new UsernameNotFoundException("Can not find user");
+			List<GrantedAuthority> roles = new ArrayList<>();
+			roles.add(new GrantedAuthority() {
+				@Override
+				public String getAuthority() {
+					if (user.isAdmin())
+						return "ROLE_ADMIN";
+					return "ROLE_USER";
+				}
+			});
+			org.springframework.security.core.userdetails.User springUser = 
+					new org.springframework.security.core.userdetails.User
+					(user.getEmail(), user.getPassword(), user.isActive(), true, true, true, roles);
+			return springUser;
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new UsernameNotFoundException("Can not find user", e);
+		}
+	}
+
 	public User get(String email, String password) throws SQLException {
 		String sql = 
 				"SELECT id,name,email,phone,address,card "
@@ -34,7 +65,7 @@ public class UserDAO {
 	
 	public User get(String email) throws SQLException {
 		String sql = 
-				"SELECT id,name,email,phone,address,card,admin,active "
+				"SELECT id,name,email,password,phone,address,card,admin,active "
 				+ "FROM users "
 				+ "WHERE email=?";
 		List<User> users = jdbcTemplate.query(sql, new Object[] {email}, new BeanPropertyRowMapper<>(User.class));

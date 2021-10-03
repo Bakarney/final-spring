@@ -22,7 +22,6 @@ public class DeleteProduct implements Command {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
 		productDAO.delete(Integer.valueOf(request.getParameter("id")));
-    	System.out.println("Here");
     	response.sendRedirect("/final-spring/admin_catalog");
 	}
 

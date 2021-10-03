@@ -32,13 +32,13 @@ public class BuildOrderConflict implements Command {
 		List<Integer> list = ((Order)session.getAttribute("order")).getCart();
 		for (Integer i : list)
 			products.add(productDAO.get(i));
-		request.setAttribute("local_products", products);
+		model.addAttribute("local_products", products);
 		
 		products = new ArrayList<>();
 		list = ((Order)session.getAttribute("cloud_order")).getCart();
 		for (Integer i : list)
 			products.add(productDAO.get(i));
-		request.setAttribute("cloud_products", products);
+		model.addAttribute("cloud_products", products);
 	}
 
 }
