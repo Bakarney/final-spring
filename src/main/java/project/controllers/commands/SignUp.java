@@ -10,6 +10,11 @@ import org.springframework.ui.Model;
 import project.DAO.*;
 import project.entities.*;
 
+/**
+ * @author Naberezhniy Artur
+ * 
+ * Adding new user to BD if user with this email is not exists.
+ */
 @Component
 public class SignUp implements Command {
 	
@@ -30,7 +35,6 @@ public class SignUp implements Command {
 		user.setAddress(request.getParameter("address"));
 		user.setCard(request.getParameter("card"));
 		userDAO.create(user);
-		request.getSession().setAttribute("user", user);
-		response.sendRedirect("/final-spring/profile");
+		response.sendRedirect("/final-spring/sign_in");
 	}
 }

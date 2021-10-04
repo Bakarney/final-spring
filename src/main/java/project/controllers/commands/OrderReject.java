@@ -9,6 +9,12 @@ import org.springframework.ui.Model;
 
 import project.DAO.*;
 
+/**
+ * @author Naberezhniy Artur
+ * 
+ * Taking request parameter "id", and changes status of order with this id
+ * to "rejected".
+ */
 @Component
 public class OrderReject implements Command {
 	

@@ -11,6 +11,11 @@ import org.springframework.stereotype.Component;
 import project.DAO.mappers.IntegerMapper;
 import project.entities.*;
 
+/**
+ * @author Naberezhniy Artur
+ * 
+ * Consists methods to manage orders in DB.
+ */
 @Component
 public class OrderDAO {
 	
@@ -21,6 +26,11 @@ public class OrderDAO {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 	
+	/**
+	 * @param Order id
+	 * @return List of orders products
+	 * @throws SQLException
+	 */
 	private Order getOrdersProducts(Order order) throws SQLException {
 		String sql = 
 				"SELECT product_id "
@@ -30,6 +40,11 @@ public class OrderDAO {
 		return order;
 	}
 	
+	/**
+	 * @param Order id
+	 * @return Order
+	 * @throws SQLException
+	 */
 	public Order get(int id) throws SQLException {
 		String sql =
 				"SELECT orders.id,orders.state,user_id "
@@ -41,6 +56,11 @@ public class OrderDAO {
 		return getOrdersProducts(orders.get(0));
 	}
 	
+	/**
+	 * @param User (needs only id)
+	 * @return Order
+	 * @throws SQLException
+	 */
 	public Order get(User user) throws SQLException {
 		String sql =
 				"SELECT orders.id "
@@ -52,6 +72,10 @@ public class OrderDAO {
 		return getOrdersProducts(orders.get(0));
 	}
 	
+	/**
+	 * @return List
+	 * @throws SQLException
+	 */
 	public List<Order> getAll() throws SQLException {
 		String sql =
 				"SELECT orders.id,orders.state,user_id "
@@ -63,6 +87,11 @@ public class OrderDAO {
 		return orders;
 	}
 	
+	/**
+	 * @param User id
+	 * @return Order
+	 * @throws SQLException
+	 */
 	public Order create(int userId) throws SQLException {
 		String sql =
 				"INSERT INTO orders (user_id) "
@@ -73,6 +102,12 @@ public class OrderDAO {
 		return get(user);
 	}
 	
+	/**
+	 * @param Order id
+	 * @param Product id
+	 * @return If product was added
+	 * @throws SQLException
+	 */
 	public boolean addProduct(int id, int product_id) throws SQLException {
 		System.out.println(id + " " + product_id);
 		String sql =
@@ -82,6 +117,12 @@ public class OrderDAO {
 		return num > 0;
 	}
 	
+	/**
+	 * @param Order id
+	 * @param Product id
+	 * @return If product was removed
+	 * @throws SQLException
+	 */
 	public boolean removeProduct(int id, int product_id) throws SQLException {
 		String sql =
 				"DELETE FROM orders_products "
@@ -90,6 +131,12 @@ public class OrderDAO {
 		return num > 0;
 	}
 	
+	/**
+	 * @param Order id
+	 * @param State
+	 * @return If state was set
+	 * @throws SQLException
+	 */
 	public boolean setState(int id, String state) throws SQLException {
 		String sql =
 				"UPDATE orders "
@@ -99,6 +146,11 @@ public class OrderDAO {
 		return num > 0;
 	}
 	
+	/**
+	 * @param Order id
+	 * @return If order was deleted
+	 * @throws SQLException
+	 */
 	public boolean delete(int id) throws SQLException {
 		String sql =
 				"DELETE FROM orders "

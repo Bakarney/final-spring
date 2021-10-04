@@ -10,6 +10,11 @@ import org.springframework.ui.Model;
 import project.DAO.*;
 import project.entities.*;
 
+/**
+ * @author Naberezhniy Artur
+ * 
+ * Preparing lists of cloud and local orders for order conflict page.
+ */
 @Component
 public class ManageOrderConflict implements Command {
 	

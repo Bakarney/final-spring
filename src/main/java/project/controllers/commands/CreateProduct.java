@@ -10,6 +10,12 @@ import org.springframework.ui.Model;
 import project.DAO.*;
 import project.entities.*;
 
+/**
+ * @author Naberezhniy Artur
+ * 
+ * Taking request parameters "name", "category", "gender", "producer",
+ * "number", "price", "photo" and creation new Product in DB.
+ */
 @Component
 public class CreateProduct implements Command {
 	

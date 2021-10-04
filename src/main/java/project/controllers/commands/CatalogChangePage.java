@@ -6,6 +6,12 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
 
+/**
+ * 
+ * @author Naberezhniy Artur
+ * 
+ * Preparing correct request due to page change.
+ */
 @Component
 public class CatalogChangePage implements Command {
 

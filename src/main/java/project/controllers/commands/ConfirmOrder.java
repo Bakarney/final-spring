@@ -11,6 +11,12 @@ import org.springframework.ui.Model;
 import project.DAO.*;
 import project.entities.*;
 
+/**
+ * @author Naberezhniy Artur
+ * 
+ * Setting status of order to "registrated" or redirects to sign in page if
+ * user isn't authorized.
+ */
 @Component
 public class ConfirmOrder implements Command {
 	

@@ -10,6 +10,11 @@ import org.springframework.ui.Model;
 import project.DAO.*;
 import project.entities.Product;
 
+/**
+ * @author Naberezhniy Artur
+ * 
+ * Preparing Product for product page and puts in request attribute "product".
+ */
 @Component
 public class BuildProduct implements Command {
 	

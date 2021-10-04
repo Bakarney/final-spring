@@ -10,6 +10,12 @@ import org.springframework.ui.Model;
 import project.DAO.*;
 import project.entities.*;
 
+/**
+ * @author Naberezhniy Artur
+ * 
+ * Making request to DAO with request parameter "id", and puts found Product
+ * to request attributes with name "product".
+ */
 @Component
 public class BuildAdminProduct implements Command {
 	

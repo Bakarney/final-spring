@@ -10,6 +10,11 @@ import org.springframework.stereotype.Component;
 
 import project.DAO.mappers.StringMapper;
 
+/**
+ * @author Naberezhniy Artur
+ * 
+ * Consists methods to manage producers in DB.
+ */
 @Component
 public class ProducerDAO {
 	
@@ -20,6 +25,10 @@ public class ProducerDAO {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 	
+	/**
+	 * @return List of producers names
+	 * @throws SQLException
+	 */
 	public List<String> getAll() throws SQLException {
 		String sql =
 				"SELECT name "
@@ -27,6 +36,11 @@ public class ProducerDAO {
 		return jdbcTemplate.query(sql, new StringMapper());
 	}
 	
+	/**
+	 * @param Producer name
+	 * @return If producer was created.
+	 * @throws SQLException
+	 */
 	public boolean create(String name) throws SQLException {
 		String sql =
 				"INSERT INTO producer (name) "
@@ -35,6 +49,11 @@ public class ProducerDAO {
 		return num > 0;
 	}
 	
+	/**
+	 * @param Producer name
+	 * @return If deleted was created.
+	 * @throws SQLException
+	 */
 	public boolean delete(String name) throws SQLException {
 		String sql =
 				"DELETE FROM producer "

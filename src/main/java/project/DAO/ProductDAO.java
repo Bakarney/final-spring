@@ -11,6 +11,11 @@ import org.springframework.stereotype.Component;
 import project.DAO.mappers.*;
 import project.entities.Product;
 
+/**
+ * @author Naberezhniy Artur
+ * 
+ * Consists methods to manage products in DB.
+ */
 @Component
 public class ProductDAO {
 	
@@ -21,6 +26,11 @@ public class ProductDAO {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 	
+	/**
+	 * @param Product id
+	 * @return Product
+	 * @throws SQLException
+	 */
 	public Product get(int id) throws SQLException {
 		String sql = 
 				"SELECT products.id AS id,products.name AS name,description,producer.name AS producer,categories.name AS category,gender,number,price,photo "
@@ -34,6 +44,10 @@ public class ProductDAO {
 		return products.get(0);
 	}
 	
+	/**
+	 * @return List of all products
+	 * @throws SQLException
+	 */
 	public List<Product> getAll() {
 		String sql =
 				"SELECT products.id AS id,products.name AS name,description,producer.name AS producer,categories.name AS category,gender,number,price,photo "
@@ -43,6 +57,11 @@ public class ProductDAO {
 		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Product.class));
 	}
 	
+	/**
+	 * @param Order id
+	 * @return List of orders products
+	 * @throws SQLException
+	 */
 	public List<Product> getOrders(int id) throws SQLException {
 		String sql = 
 				"SELECT products.id AS id,products.name AS name,producer.name AS producer,categories.name AS category,gender,number,price,photo "
@@ -55,6 +74,18 @@ public class ProductDAO {
 		return jdbcTemplate.query(sql, new Object[] {id}, new BeanPropertyRowMapper<>(Product.class));
 	}
 	
+	/**
+	 * @param categories
+	 * @param producers
+	 * @param gender
+	 * @param bot
+	 * @param top
+	 * @param order
+	 * @param start
+	 * @param number
+	 * @return List of filtered and limited products
+	 * @throws SQLException
+	 */
 	public List<Product> getFiltered(String[] categories, String[] producers, String gender, String bot, String top, String order, String start, String number) throws SQLException {
 		String sql = 
 				"SELECT products.id AS id,products.name AS name,categories.name AS category,number,price,photo,producer.name AS producer,gender "
@@ -65,6 +96,15 @@ public class ProductDAO {
 		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Product.class));
 	}
 	
+	/**
+	 * @param categories
+	 * @param producers
+	 * @param gender
+	 * @param bot
+	 * @param top
+	 * @return Number of filtered and limited products
+	 * @throws SQLException
+	 */
 	public int count(String[] categories, String[] producers, String gender, String bot, String top) throws SQLException {
 		String sql =
 				"SELECT COUNT(products.id) "
@@ -75,6 +115,11 @@ public class ProductDAO {
 		return jdbcTemplate.query(sql, new IntegerMapper()).get(0);
 	}
 	
+	/**
+	 * @param Product
+	 * @return If product was created
+	 * @throws SQLException
+	 */
 	public boolean create(Product product) throws SQLException {
 		String sql =
 				"INSERT INTO products (name,category_id,description,number,price,photo,producer_id,gender) "
@@ -85,6 +130,11 @@ public class ProductDAO {
 		return num > 0;
 	}
 	
+	/**
+	 * @param Product
+	 * @return If product was updated
+	 * @throws SQLException
+	 */
 	public boolean update(Product product) throws SQLException {
 		String sql =
 				"UPDATE products "
@@ -103,6 +153,11 @@ public class ProductDAO {
 		return num > 0;
 	}
 	
+	/**
+	 * @param Product
+	 * @return If product was deleted
+	 * @throws SQLException
+	 */
 	public boolean delete(int id) throws SQLException {
 		String sql =
 				"DELETE FROM products "

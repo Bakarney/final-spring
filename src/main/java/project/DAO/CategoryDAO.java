@@ -10,6 +10,11 @@ import org.springframework.stereotype.Component;
 
 import project.DAO.mappers.StringMapper;
 
+/**
+ * @author Naberezhniy Artur
+ * 
+ * Consists methods to manage categories in DB.
+ */
 @Component
 public class CategoryDAO {
 	
@@ -20,6 +25,10 @@ public class CategoryDAO {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 	
+	/**
+	 * @return List of categories names
+	 * @throws SQLException
+	 */
 	public List<String> getAll() throws SQLException {
 		String sql =
 				"SELECT name "
@@ -27,6 +36,11 @@ public class CategoryDAO {
 		return jdbcTemplate.query(sql, new StringMapper());
 	}
 	
+	/**
+	 * @param Category name
+	 * @return If category was created.
+	 * @throws SQLException
+	 */
 	public boolean create(String name) throws SQLException {
 		String sql =
 				"INSERT INTO categories (name) "
@@ -35,6 +49,11 @@ public class CategoryDAO {
 		return num > 0;
 	}
 	
+	/**
+	 * @param Category name
+	 * @return If category was deleted.
+	 * @throws SQLException
+	 */
 	public boolean delete(String name) throws SQLException {
 		String sql =
 				"DELETE FROM producer "

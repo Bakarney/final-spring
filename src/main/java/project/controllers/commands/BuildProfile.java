@@ -11,6 +11,12 @@ import org.springframework.ui.Model;
 import project.DAO.*;
 import project.entities.*;
 
+/**
+ * 
+ * @author Naberezhniy Artur
+ * 
+ * Preparing user info and checking cart conflicts.
+ */
 @Component
 public class BuildProfile implements Command {
 	

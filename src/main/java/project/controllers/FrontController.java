@@ -26,6 +26,14 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 
 import project.controllers.commands.Invoker;
 
+/**
+ * @author Naberezhniy Artur
+ * 
+ * This is front controller.
+ * It collects all requests to server and delegates them to other controllers.
+ * FrontController doesn't have any logic in it, and only redirects requests
+ * to pages and calling other controllers.
+ */
 @Controller
 public class FrontController {
 	

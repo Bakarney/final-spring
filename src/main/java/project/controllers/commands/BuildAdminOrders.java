@@ -15,6 +15,15 @@ import org.springframework.ui.Model;
 import project.DAO.*;
 import project.entities.*;
 
+/**
+ * @author Naberezhniy Artur
+ * 
+ * Making List of all Orders from DAO and puts it in request attribute "orders".
+ * In orders list after each order goes empty orders containing only info
+ * about one product of this order.
+ * Also making Map of all user id to their names and all products id and
+ * their names.
+ */
 @Component
 public class BuildAdminOrders implements Command {
 	

@@ -12,6 +12,11 @@ import org.springframework.ui.Model;
 import project.DAO.*;
 import project.entities.*;
 
+/**
+ * @author Naberezhniy Artur
+ * 
+ * Making List of all Users from DAO and puts it in request attribute "users".
+ */
 @Component
 public class BuildAdminUsers implements Command {
 	

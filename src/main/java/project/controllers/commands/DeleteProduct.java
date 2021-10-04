@@ -9,6 +9,11 @@ import org.springframework.ui.Model;
 
 import project.DAO.*;
 
+/**
+ * @author Naberezhniy Artur
+ * 
+ * Taking request parameter "id", and deletes product with this id from DB.
+ */
 @Component
 public class DeleteProduct implements Command {
 	

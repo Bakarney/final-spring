@@ -17,6 +17,13 @@ import org.springframework.ui.Model;
 import project.DAO.*;
 import project.entities.*;
 
+/**
+ * @author Naberezhniy Artur
+ * 
+ * Taking request parameters "id", "name", "category", "gender", "producer",
+ * "number", "price", "photo". Changes all information about product with 
+ * taken id.
+ */
 @Component
 public class UpdateProduct implements Command {
 	

@@ -11,6 +11,12 @@ import org.springframework.ui.Model;
 import project.DAO.*;
 import project.entities.*;
 
+/**
+ * @author Naberezhniy Artur
+ * 
+ * Taking "id" from request parameters and removing it from orders product List
+ * from session or from DB, if session contains parameter "user".
+ */
 @Component
 public class OrderRemoveProduct implements Command {
 	

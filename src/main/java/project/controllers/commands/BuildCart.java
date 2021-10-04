@@ -14,6 +14,13 @@ import org.springframework.ui.Model;
 import project.DAO.*;
 import project.entities.*;
 
+/**
+ * @author Naberezhniy Artur
+ * 
+ * Making List of products of order from session or from DB, if session
+ * contains parameter "user". If both of them isn't in session will return
+ * empty List.
+ */
 @Component
 public class BuildCart implements Command {
 	

@@ -11,6 +11,13 @@ import org.springframework.ui.Model;
 import project.DAO.*;
 import project.entities.*;
 
+/**
+ * @author Naberezhniy Artur
+ * @deprecated
+ * 
+ * Adding to session attribute user if it active and his email and password 
+ * is correct. If user is admin redirects him to admin page.
+ */
 @Component
 public class SignIn implements Command {
 	

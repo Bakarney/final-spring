@@ -13,6 +13,14 @@ import org.springframework.ui.Model;
 import project.DAO.*;
 import project.entities.*;
 
+/**
+ * @author Naberezhniy Artur
+ * 
+ * Creating lists of products, categories and producers from DB and puts
+ * in request attributes with corresponding names.
+ * Making request to DAO with unnecessary request parameters "sort", "gender", 
+ * "producer", "category", "bot", "top", "page".
+ */
 @Component
 public class BuildCatalog implements Command {
 	
