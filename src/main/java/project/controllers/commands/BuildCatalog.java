@@ -54,6 +54,10 @@ public class BuildCatalog implements Command {
 		int numberPages = (productDAO.count(categoriesData, producersData, gender, bot, top) - 1)/PAGE_LENGTH + 1;
 		model.addAttribute("numberPages", numberPages);
 		
+		for (Product prod : products) 
+			if (prod.getPhoto() == null)
+				prod.setPhoto("no_img.jpg");
+		
 		List<List<Product>> listProducts = new ArrayList<>();
 		for (int i = 0; i < products.size(); i++) {
 			if ((i+1)%ROW_LENGTH == 1) 
