@@ -35,7 +35,7 @@ public class CreateProduct implements Command {
 		prod.setProducer(request.getParameter("producer"));
 		prod.setNumber(Integer.valueOf(request.getParameter("number")));
 		prod.setPrice(Float.valueOf(request.getParameter("price")));
-		prod.setPhoto((String)model.getAttribute("file"));
+		prod.setPhoto((String)model.getAttribute("photo"));
 		productDAO.create(prod);
 		
 		response.sendRedirect("/final-spring/admin_catalog");

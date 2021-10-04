@@ -209,35 +209,37 @@ public class FrontController {
 	}
 	
 	@PostMapping("/update_product")
-	public void updateProduct(@RequestParam CommonsMultipartFile file, HttpServletRequest request, HttpServletResponse response, Model model) {
-		if (file != null) try {
+	public void updateProduct(@RequestParam CommonsMultipartFile photo, HttpServletRequest request, HttpServletResponse response, Model model) {
+		try {
 			String path=request.getSession().getServletContext().getRealPath("/");
-			String filename=file.getOriginalFilename();
-	        byte barr[]=file.getBytes();
-	        BufferedOutputStream bout=new BufferedOutputStream(new FileOutputStream(path+"/"+filename));
+			String filename=photo.getOriginalFilename();
+	        byte barr[]=photo.getBytes();
+	        BufferedOutputStream bout=new BufferedOutputStream(
+	        		new FileOutputStream(path+"/view/media/" + request.getParameter("category") + "/" +filename));
 	        bout.write(barr);
 	        bout.flush();
 	        bout.close();
-	        model.addAttribute("file", filename);
+	        model.addAttribute("photo", filename);
 		} catch(IOException e) {
-			e.printStackTrace();
+			// nothing
 		}
 		command.execute("updateProduct", request, response, model);
 	}
 	
 	@PostMapping("/create_product")
-	public void createProduct(@RequestParam CommonsMultipartFile file, HttpServletRequest request, HttpServletResponse response, Model model) {
-		if (file != null) try {
+	public void createProduct(@RequestParam CommonsMultipartFile photo, HttpServletRequest request, HttpServletResponse response, Model model) {
+		try {
 			String path=request.getSession().getServletContext().getRealPath("/");
-			String filename=file.getOriginalFilename();
-	        byte barr[]=file.getBytes();
-	        BufferedOutputStream bout=new BufferedOutputStream(new FileOutputStream(path+"/"+filename));
+			String filename=photo.getOriginalFilename();
+	        byte barr[]=photo.getBytes();
+	        BufferedOutputStream bout=new BufferedOutputStream(
+	        		new FileOutputStream(path+"/view/media/" + request.getParameter("category") + "/" +filename));
 	        bout.write(barr);
 	        bout.flush();
 	        bout.close();
-	        model.addAttribute("file", filename);
+	        model.addAttribute("photo", filename);
 		} catch(IOException e) {
-			e.printStackTrace();
+			// nothing
 		}
 		command.execute("createProduct", request, response, model);
 	}

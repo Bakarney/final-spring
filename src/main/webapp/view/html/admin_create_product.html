@@ -12,7 +12,7 @@
 	<div th:replace="/admin_header"></div>
     <div class="body">
     <!-- enctype="multipart/form-data" -->
-        <form class="folder" method="POST" th:action="@{/create_product}">
+        <form class="folder" method="POST" th:action="@{/create_product}" enctype="multipart/form-data">
             <table>
                 <tr>
                     <th th:text="#{inter.admin_create_product.name}">Name</th>
