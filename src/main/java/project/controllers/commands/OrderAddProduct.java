@@ -1,5 +1,7 @@
 package project.controllers.commands;
 
+import java.security.Principal;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -33,7 +35,12 @@ public class OrderAddProduct implements Command {
 	public void execute(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
 		int id = Integer.valueOf(request.getParameter("product_id"));
 		HttpSession session = request.getSession();
-		User user = userDAO.get(request.getUserPrincipal().getName());
+		Principal principal = request.getUserPrincipal();
+		User user;
+		if (principal == null)
+			user = null;
+		else
+			user = userDAO.get(principal.getName());
 		Order order;
 		
 		if (user != null) {

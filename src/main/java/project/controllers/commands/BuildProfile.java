@@ -43,8 +43,10 @@ public class BuildProfile implements Command {
 		}
 		else if (sessionOrder != null) {
 			Order order = orderDAO.create(user.getId());
-			for (Integer i : sessionOrder.getCart())
+			for (Integer i : sessionOrder.getCart()) {
 				orderDAO.addProduct(order.getId(), i);
+				order.getCart().add(i);
+			}
 			session.setAttribute("order", order);
 		} else {
 			session.setAttribute("order", cloudOrder);

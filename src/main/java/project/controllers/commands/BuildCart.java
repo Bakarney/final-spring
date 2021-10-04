@@ -1,5 +1,6 @@
 package project.controllers.commands;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,7 +39,12 @@ public class BuildCart implements Command {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
 		HttpSession session = request.getSession();
-		User user = userDAO.get(request.getUserPrincipal().getName());
+		Principal principal = request.getUserPrincipal();
+		User user;
+		if (principal == null)
+			user = null;
+		else
+			user = userDAO.get(principal.getName());
 		Order order;
 		List<Product> products = new ArrayList<>();
 		

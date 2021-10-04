@@ -33,7 +33,7 @@
                     <td th:text="${user.isActive()}">Active</td>
                     <td>
                     	<form th:action="@{/block_user?id={id}(id=${user.getId()})}" method="POST">
-                    		<input type="submit" class="link" th:value="${user.isActive()} ? #{inter.admin_users.block.btn} : '#{inter.admin_users.unblock.btn}'"></input>
+                    		<input type="submit" class="link" th:value="${user.isActive()} ? #{inter.admin_users.block.btn} : #{inter.admin_users.unblock.btn}"></input>
                     	</form>
                     </td>
                     <td>

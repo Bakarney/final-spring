@@ -1,5 +1,7 @@
 package project.controllers.commands;
 
+import java.security.Principal;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -33,9 +35,9 @@ public class ConfirmOrder implements Command {
 	public void execute(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
 		int id = Integer.valueOf(request.getParameter("order_id"));
 		HttpSession session = request.getSession();
-		User user = userDAO.get(request.getUserPrincipal().getName());
+		Principal principal = request.getUserPrincipal();
 		
-		if (user == null) {
+		if (principal == null) {
 			response.sendRedirect("/final-spring/sign_in");
 		} else {
 			session.removeAttribute("order");

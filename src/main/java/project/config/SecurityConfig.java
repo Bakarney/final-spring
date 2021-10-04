@@ -52,7 +52,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 					.antMatchers("/confirmOrder**").hasRole("USER")
 					.antMatchers("/profile**").hasRole("USER")
 				.and()
-					.formLogin().defaultSuccessUrl("/profile", false)
+					.formLogin().successHandler(successHandler())
 				.and()
 					.formLogin().loginPage("/sign_in").permitAll()
 				.and()
@@ -63,5 +63,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 					.exceptionHandling().accessDeniedPage("/error?code=403")
 				.and()
 					.csrf().disable();
+	}
+	
+	@Bean
+	public AuthorizationHandler successHandler() {
+	    return new AuthorizationHandler();
 	}
 }
