@@ -3,17 +3,26 @@ package project.controllers;
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.servlet.NoHandlerFoundException;
 
 import project.controllers.commands.Invoker;
 
@@ -21,10 +30,38 @@ import project.controllers.commands.Invoker;
 public class FrontController {
 	
 	private Invoker command;
+	private Map<String, String> messages;
+	static final Logger logger = LogManager.getLogger(FrontController.class);
 	
 	@Autowired
 	public FrontController(Invoker command) {
 		this.command = command;
+		messages = new HashMap<>();
+		messages.put("403", "Access Denied");
+		messages.put("404", "Page not Found");
+		messages.put("500", "Server Exception");
+	}
+	
+	@GetMapping("/*")
+	public void pageNotFound(HttpServletResponse response) throws IOException {
+		response.sendRedirect("error?code=404");
+	}
+	
+	@ExceptionHandler(Throwable.class)
+    public void handleException(HttpServletResponse response, Throwable e) throws IOException {
+        logger.error(e.getStackTrace());
+        response.sendRedirect("error?code=500");
+    }
+	
+	@GetMapping("/error")
+	public String getAccessDenied(HttpServletRequest request, Model model) {
+		String code = request.getParameter("code");
+		String message = messages.get(code);
+		if (message == null)
+			message = "";
+		model.addAttribute("code", code);
+		model.addAttribute("message", message);
+		return "error";
 	}
 	
 	@GetMapping("/home")
@@ -34,11 +71,7 @@ public class FrontController {
 	
 	@GetMapping("/catalog")
 	public String getCatalog(HttpServletRequest request, HttpServletResponse response, Model model) {
-		try {
-			command.execute("buildCatalog", request, response, model);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		command.execute("buildCatalog", request, response, model);
 		return "catalog";
 	}
 	

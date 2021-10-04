@@ -1,0 +1,22 @@
+.body {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+    background-size: cover;
+    background-position: center;
+    background-image: url("http://localhost:8080/final/view/media/home_back.jpg");
+    height: 85vh;
+}
+
+.info {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	margin-bottom: 15vh;
+}
+
+.info p {
+	font-size: 150%;
+	margin: 2vh;
+	padding: 0;
+}

@@ -23,14 +23,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
     @Autowired
     private DataSource dataSource;
-    
-//    @Autowired
-//    UserDAO userDAO;
-//
-//    @Autowired
-//    public void configureUserDetailsService(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.userDetailsService(userDAO);
-//    }
 	
 	@Bean
 	public PasswordEncoder passwordEncoder() {
@@ -66,7 +58,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.and()
 					.logout().logoutUrl("/sign_out").permitAll()
 				.and()
-					.logout().logoutSuccessUrl("/home");
-		http.csrf().disable();
+					.logout().logoutSuccessUrl("/home")
+				.and()
+					.exceptionHandling().accessDeniedPage("/error?code=403")
+				.and()
+					.csrf().disable();
 	}
 }

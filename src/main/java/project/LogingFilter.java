@@ -21,7 +21,11 @@ public class LogingFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
-		String url = ((HttpServletRequest)request).getRequestURL().toString();
+		HttpServletRequest req = (HttpServletRequest)request;
+		String url = req.getRequestURL().toString();
+		String query = req.getQueryString();
+		if (query != null)
+			url += "?" + query;
 		logger.info(url);
 		chain.doFilter(request, response);
 	}

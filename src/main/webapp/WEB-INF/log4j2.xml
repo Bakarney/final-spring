@@ -9,7 +9,7 @@
     </File>
   </Appenders>
   <Loggers>
-    <Logger name="project.controllers.Test" level="trace" additivity="false">
+    <Logger name="project.controllers.Test" level="all" additivity="false">
       <AppenderRef ref="Console"/>
       <AppenderRef ref="Requests"/>
     </Logger>
