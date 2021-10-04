@@ -49,7 +49,7 @@ public class FrontController {
 	
 	@ExceptionHandler(Throwable.class)
     public void handleException(HttpServletResponse response, Throwable e) throws IOException {
-        logger.error(e.getStackTrace());
+        logger.error(e.getMessage(), e);
         response.sendRedirect("error?code=500");
     }
 	
@@ -202,7 +202,7 @@ public class FrontController {
 	
 	@PostMapping("/update_product")
 	public void updateProduct(@RequestParam CommonsMultipartFile file, HttpServletRequest request, HttpServletResponse response, Model model) {
-		try {
+		if (file != null) try {
 			String path=request.getSession().getServletContext().getRealPath("/");
 			String filename=file.getOriginalFilename();
 	        byte barr[]=file.getBytes();
@@ -219,7 +219,7 @@ public class FrontController {
 	
 	@PostMapping("/create_product")
 	public void createProduct(@RequestParam CommonsMultipartFile file, HttpServletRequest request, HttpServletResponse response, Model model) {
-		try {
+		if (file != null) try {
 			String path=request.getSession().getServletContext().getRealPath("/");
 			String filename=file.getOriginalFilename();
 	        byte barr[]=file.getBytes();

@@ -4,17 +4,25 @@
     <Console name="Console" target="SYSTEM_OUT">
       <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
     </Console>
-    <File name="Requests" fileName="C:/Users/admin/Desktop/Работа/EPAM/logs/requests.log">
-        <PatternLayout pattern="[%d{ISO8601} %-5level] %logger{36} - %msg%n"/>
+    <File name="Requests" fileName="C:/Users/admin/Desktop/Работа/EPAM/logs/final-spring/requests.log">
+        <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+    </File>
+    <File name="Errors" fileName="C:/Users/admin/Desktop/Работа/EPAM/logs/final-spring/errors.log">
+        <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+    </File>
+    <File name="All" fileName="C:/Users/admin/Desktop/Работа/EPAM/logs/final-spring/all.log">
+        <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
     </File>
   </Appenders>
   <Loggers>
-    <Logger name="project.controllers.Test" level="all" additivity="false">
+    <Logger name="project.LogingFilter" level="info" additivity="false">
       <AppenderRef ref="Console"/>
       <AppenderRef ref="Requests"/>
     </Logger>
     <Root level="all">
-      <!--AppenderRef ref="Console"/-->
+      <AppenderRef ref="Console" level="debug"/>
+      <AppenderRef ref="Errors" level="error"/>
+      <AppenderRef ref="All" level="all"/>
     </Root>
   </Loggers>
 </Configuration>

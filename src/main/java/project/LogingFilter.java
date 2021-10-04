@@ -12,11 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import project.controllers.Test;
-
 public class LogingFilter implements Filter {
 	
-	static final Logger logger = LogManager.getLogger(Test.class);
+	static final Logger logger = LogManager.getLogger(LogingFilter.class);
 
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
